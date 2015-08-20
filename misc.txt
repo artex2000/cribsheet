@@ -1,0 +1,117 @@
+bash shortcuts: Alt-F - forward a word, Alt-B - back a word, Alt-d - delete word
+                Ctrl-A - start of line, Ctrl-E - end of line, Ctrl-W - del word before cursor, Ctrl-K - delete to the end of line
+		Alt-. recall last argument of previous command
+		/<Tab><Tab> - shortcut to ls -a
+        !! - repeat last command (sudo !!)
+        
+hexdump -v -C filename
+
+ln -s target link_name
+
+tr 'char' 'char2' <file1 > file2 replaces all chars with char2
+tr -d 'char' <file1 > file2 - removes char
+
+sed '/pattern/d' infile > outfile - deletes lines that contain "pattern"
+sed 's/.*/"&"/' infile - double quote each string in file (useful for find |xargs for filenames with spaces)
+
+mount -t cifs //server/path/to/folder 
+             /mnt/mountpoint 
+             -o username=name,dom=domain_name,password=password 
+             //if mount manually don't give password in command line - mount windows share folder
+-o options:
+    username - user name
+    dom - domain name
+    password - password
+    file_mode=0777
+    dir_mode=0777   to have read/write access
+all options separated by comma, no spaces
+
+Bash replace extention
+for file in *.ext1
+do mv "$file" "${file%.ext1}.ext2"
+done
+
+setxkbmap -option caps:escape (set CapsLock to emulate Esc in X system)
+set -o vi (set command line editing mode to vi)
+
+bash case-insensitive TAB autocomplete
+put the following in ~/.inputrc
+$include /etc/inputrc
+set completion-ignore-case On
+
+Enable TAB autocompletion in vi editing mode
+put the following in ~/.inputrc
+"\C-i": complete
+
+
+Following is the list of shortcuts which will save your precious time;
+Essential
+ctrl+a : jump to beginning of line you are typing on ;  (^ in vi mode)
+ctrl+e : jump to end of line you are typing on ;        ($ in vi mode)
+ctrl+l : clear the screen :
+ctrl+K : clear the line after cursor ;                  (d$ in vi mode)
+ctrl+w : erase word before cursor ; //including all non-space characters
+alt-d : delete word
+
+
+
+#) Using Ctrl combination :
+ctrl+a : jump to beginning of line you are typing on ;
+ctrl+b : moving back a character ;
+ctrl+c : terminate the command;
+ctrl+d : delete character at cursor;
+ctrl+D : exit the current shell;
+ctrl+h : delete character before cursor ;
+ctrl+e : jump to end of line you are typing on ;
+ctrl+f : move forward by one character ;
+ctrl+l : clear the screen :
+ctrl+K : clear the line after cursor ;
+ctrl+H : works as backspace ;
+ctrl+t : transpose 2 characters ;
+ctrl+xx : move between end-of-line and current cursor position ;
+ctrl+r : search the history backwords ;
+ctrl+w : erase word before cursor ;
+ctrl+x@ : shows possible hostname completions;
+ctrl+y : recover previous deletion ;
+ctrl+z : suspend/stop the command which is running ;
+
+#) UsingAlt combination :
+Alt + > – Move to the last line in the history ;
+Alt + ? – Show current completion list ;
+Alt + * – Insert all possible completions ;
+Alt + / – Attempt to complete filename ;
+Alt + . – Yank last argument to previous command ;
+Alt + b – Move backward ;
+Alt + c – Capitalize the word ;
+Alt + d – Delete word ;
+Alt + f – Move word forward ;
+Alt + l – Make word lowercase ;
+Alt + n – Search the history forwards non-incremental ;
+Alt + p – Search the history backwards non-incremental ;
+Alt + r – Recall command ;
+Alt + t – Move words around ;
+Alt + u – Make word uppercase ;
+Alt + back-space – Delete backward from cursor ;
+
+#) Using Esc combination :
+esc+d : delete word ;
+esc+f : move forward a word ;
+esc+b : mmove backward a word ;
+esc+t : transpose two adjacent words ;
+
+#) Using Tab combination :
+*)Press tab twice to see all available commands;
+*)Press tab twice after a word to view all commands starting with that word ;
+*)Pressing ~along with hitting tab 2 times will give you list of all user on system from /etc/passwd;
+*)Pressing $along with hitting tab 2 times will show you all sys variables ;
+*)Pressing / along with hitting tab 2 times will give you entire directory structure including hidden ;
+
+#) Some extras :
+*) To complete a command you can hit the tab key after typing one or more letters of a command.
+*) you can use ! along with first few character of previous command to get previous command fired;
+
+eg; if you have used ifconfig sometime back then you can use !if to fire that command once again.
+
+
+
+

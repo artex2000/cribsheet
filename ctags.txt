@@ -1,0 +1,7 @@
+add first strings of files to tags
+ctags --extra=+f \
+      --langdef=file \
+      --langmap='file:.ext1.ext2.ext3' \	!!!do not add extensions used in other languages
+
+create global tag file in addition to local files
+ctags --file-scope=no -R

@@ -1,0 +1,146 @@
+===========build ports
+make print-build-depends
+make print-run-depends
+add the following to /etc/mk.conf
+WRKOBJDIR=/usr/obj/ports
+
+===========(ksh)
+r - execute previous command
+r <num> - execute command <num> in history
+
+===========tmux
+Conf file .tmux.conf
+---change default C-b prefix to C-a
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+----
+set switchning windows without pressing prefix
+bind -n F1 select-window -t 0
+
+
+
+OpenBSD MBR partitioning:
+First use fdisk to setup primary partitions
+# fdisk -e sd3                      //execute command from shell as root (sd3 is the USB device)
+fdisk :*1> reinit                   //clear MBR
+fdisk :*1> edit 3                   //edit primary partition 3 (last)
+Partition id ('0' to disable) [0 - FF]: [A6] (? for help)   //OpenBSD partition type
+Do you wish to edit in CHS mode? [n]    //do not use Cylinder/Head/Sector mode
+Partition offset: [64]                  //Aligned offset
+Partition size: [7871786] 102400        //50MB size
+fdisk :*1> edit 0                       //edit primary partition 0
+Partition id ('0' to disable) [0 - FF]: [0] (? for help) c  //FAT32 LBA-mapped partition type
+Do you wish to edit in CHS mode? [n]    //do not use Cylinder/Head/Sector mode
+Partition offset: [0] 102464            //Aligned offset after previous partition
+Partition size: [0] *                   //All size that's left
+fdisk :*1> w                            //write changes
+fdisk :*1> q                            //quit
+Second create OpenBSD disklabel
+# disklabel -E sd3
+> a a               //add OpenBSD "a" slice and point it to primary partition 3 created at first step
+offset: [64]
+size: [102400]
+FS type: [4.2BSD]
+> w                 //write disk label
+> q                 //quit
+
+# newfs sd3a            //format "a" slice as FFS
+# newfs_msdos sd3i      //format "i" slice as FAT32
+# mount /dev/sd3a /mnt  //mount "a" slice" for access
+
+# installboot -vr /mnt sd3 /usr/mdec/biosboot /usr/mdec/boot //install PBR
+
+copy RAM-disk kernels into "a" slice for booting:
+# cd /mnt           //remember /dev/sd3a is mounted on /mnt after previous steps
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/amd64/bsd.rd //select suitable FTP host and get ram_disk kernel
+# mv bsd.rd bsd     //make ram_disk kernel default kernel
+--------------- or to have several kernels with no default:
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/amd64/bsd.rd
+# mv bsd.rd 5.6_amd64.bsd.rd
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/i386/bsd.rd
+# mv bsd.rd 5.6_i386.bsd.rd
+------------------------------------------------------------
+# cd /              //leave /mnt so it can be unmounted
+# umount /mnt       //self-explanatory
+
+To boot from non-default kernel execute at the boot prompt:
+boot> boot /5.6_amd64.bsd.rd
+
+get all extra required components for local installation:
+# mount_msdos /dev/sd3i /mnt                    //mount "i" slice
+# mkdir -p /mnt/5.6/amd64; mkdir /mnt/5.6/i386  //create storage directories
+download files:
+# cd /mnt/5.6/amd64
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/amd64/*.tgz
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/amd64/bsd*
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/amd64/INSTALL*
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/amd64/SHA256*
+# cd ../i386
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/i386/*.tgz
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/i386/bsd*
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/i386/INSTALL*
+# ftp -a ftp.ca.openbsd.org:/pub/OpenBSD/5.6/i386/SHA256*
+# cd /              //leave /mnt so it can be unmounted
+# umount /mnt       //self-explanatory
+
+
+OpenBSD installation
+--------------------
+! - drop to shell during installation
+exit - to return to installation script
+
+Install extra files from local storage
+--------------------------------------
+Location of sets? (disk ftp http or 'done') [ftp] disk
+Is the disk partition already mounted? [no]
+Available disks are: sd0 sd1 sd2 sd3.
+Which one contains the install media? (or 'done') [sd0] sd3
+  a:           102400               64  4.2BSD   2048 16384    1
+  i:          7784384           102464   MSDOS
+Available sd3 partitions are: a i.
+Which one has the install sets? (or 'done') [a] i
+Pathname to the sets? (or 'done') [5.6/amd64]
+
+Possible problem - INSTALL.amd64 not found. Use sets found here anyway? [no] yes (ignore error)
+
+--------------------------------------
+list available disks:
+sysctl hw.disknames
+
+Dual boot with Windows7
+Boot from USB installer
+During installation create OpenBSD primary partition (type A6) with fdisk.
+Remember partition start sector
+Install OpenBSD as usual
+Get PBR. Depending on partitioning scheme it may be the first block of "a" slice
+If this is the case:
+# dd if=/dev/sd0a of=openbds.pbr bs=512 count=1
+If not use OpenBSD partition that describes whole device with appropriate offset
+# dd if=/dev/sd0c of=openbds.pbr skip=<part_start_sector> bs=512 count=1
+Save openbsd.pbr somewhere, where you can access it
+Reboot, you should end up in Win7
+From there:
+Copy openbsd.pbr on C:\ (in root folder)
+Run command prompt with admin rights:
+C:\Windows\system32> bcdedit /create /d "OpenBSD/i386" /application bootsector
+ - The entry {0154a872-3d41-11de-bd67-a7060316bbb1} was successfully created.
+Note assigned guid
+C:\Windows\system32> bcdedit /set {0154a872-3d41-11de-bd67-a7060316bbb1} device boot
+ - The operation completed successfully.
+
+C:\Windows\system32> bcdedit /set {0154a872-3d41-11de-bd67-a7060316bbb1} path \openbsd.pbr
+ - The operation completed successfully.
+
+C:\Windows\system32> bcdedit /set {0154a872-3d41-11de-bd67-a7060316bbb1} device partition=c:
+ - The operation completed successfully.
+
+C:\Windows\system32> bcdedit /displayorder {0154a872-3d41-11de-bd67-7060316bbb1} /addlast
+ - The operation completed successfully.
+
+
+
+
+
+
+

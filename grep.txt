@@ -1,0 +1,12 @@
+Filter file extensions with grep:
+
+cat txt_file_with_file_names | grep ".*\.[ext1,ext2]$"
+
+Exclude lines with pattern
+grep -v "pattern"
+
+Ignore case
+grep -i
+
+grep recursive search in current directory and down directory tree
+grep -R -i "What-to-find" --include=*.[file types] .

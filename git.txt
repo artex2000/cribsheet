@@ -1,0 +1,40 @@
+git pull == git fetch + git merge origin/master
+git log --abbrev-commit --pretty=oneline -- ./path/to/file - to see all commits, where file was changed
+git config --global user.[name,email] "new_value" - set user name and email
+git reset HEAD ./path/to/file - unstage file, but keep it modified
+git reset HEAD~3 - move head three commits back
+git checkout -- ./path/to/file - undo all modifications done to a file
+git status - shows what is changed, what is staged
+git rebase <base branch name> - rebase current branch to <base-branch> and put local commits on top
+git rebase --onto one_branch two_branch three_branch - replay commits done to three since forking two on top of one
+git push [what] where 
+
+Add local repo to new remote repo
+1. On remote host create bare repo:
+~# git init --bare <repo_name>.git
+2. Add created remote repo to local repo
+~# git remote add origin /path/to/remote/repo
+3. Make initial push into remote
+~# git push -u origin master
+
+git checkout <branch-name> -- ./path/to/file - update file from other branch
+git clone to specific dir
+    git clone /path/to/repo dirname
+    
+git reflog - keeps track of HEAD position
+so after git reset --hard <old commit> still can get back via git reset HEAD@{x}, where HEAD@{x} is ref record of head position you want to jump back
+also check reflog of particular branch:
+git reflog show <branch-name>
+
+git push local branch to remote:
+git checkout -b local_branch
+git commit -m "some changes"
+git push --set-upstream origin local_branch (as a side note --set-upstream == -u)
+
+get remote branch that is not in local repo
+git fetch origin
+git checkout --track origin/branch_name to the same name
+git checkout --track -b local_name origin/branch_name - to the different name
+
+compare files in different branches
+git diff branch1 branch2 -- path/to/file

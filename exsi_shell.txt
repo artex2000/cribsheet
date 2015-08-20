@@ -1,0 +1,21 @@
+!!!!!!!!!!!!!!!!! you have to have VMWare guest tools installed!!!!!!!!!!!!!!!!!!!!!!!!
+1. Use grep to find the ID of your VM (1008 in this example):
+
+~ # vim-cmd vmsvc/getallvms | grep -i CENTOS1
+1008   CENTOS1      [CX4-01-LUN9] CENTOS1/CENTOS1.vmx         centos64Guest
+
+2. Quick sanity check to verify the VM is actually powered off:
+
+~ # vim-cmd vmsvc/get.summary 1008 | egrep '(power|ip)'
+      powerState = "poweredOff",
+      ipAddress = ,
+      
+3. Power on, wait a few moments, and check status again:
+
+~ # vim-cmd vmsvc/power.on 1008
+Powering on VM:
+~ # vim-cmd vmsvc/get.summary 1008 | egrep '(power|ip)'
+      powerState = "poweredOn",
+      ipAddress = "10.136.234.38",
+------------------------------------------------------------------------------------------
+

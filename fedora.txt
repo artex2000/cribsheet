@@ -1,0 +1,25 @@
+How to make custom kernel for Fedora distro:
+1. Install build tools
+    #yum groupinstall 'C Development Tools and Libraries'
+2. Download kernel source:
+    #cd /usr/src/kernels
+    #git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+    #cd linux-stable
+3. Create config file from old Fedora config:
+    #cp /boot/config-3.xx.xx-xxx.fcxx.x86 ./.config
+4. Configure kernel options based on oldconfig
+    #make oldconfig
+5. Build source
+    #make -j4
+6. Install kernel modules
+    #make modules_install
+7. Install kernel
+    #cp ./arch/x86/boot/bzImage /boot/vmlinuz-x.xx.xx
+8. Install debug symbols
+    #cp System.map /boot/System.map-x.xx.xx
+9. Generate initramfs
+    #mkinitrd /boot/initramfs-x.xx.xx.img x.xx.xx
+10. Configure grub
+    #grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+11. Restart system
+    #reboot

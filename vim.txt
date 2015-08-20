@@ -1,0 +1,93 @@
+Ctrl-[ is equal to Esc
+Ctrl-] jump to tag under cursor
+Ctrl-T jump between tags (back)
+Ctrl-O jump back (for example from gd - jump to local definition, gD - jump to global definition)
+Ctrl-O Ctrl-O - jump to last edited file
+Ctrl-I jump forward
+Ctrl-A increment number under cursor or to the right of the cursor
+Ctrl-X decrement number
+:n.<Enter> - open a directory view
+:tj - select between duplicated tags
+
+%-jump between parentheses
+*-jump forward to same word
+#-jump back to same word
+
+:set ffs=dos - will get rid of ^M at the and of the line
+ma - set local mark; 'a - jump to local mark
+mA - set global mark; 'A - jump to global mark (may be in different file)
+"<letter> - select clipboard with name <letter> to store copied/cut text: "ayy - copy line into clipboard <a>; "ap - paste line from clipboard <a>
+q: - open command window to browse previous commands to repeat
+q/ - open command window to browse previous searches to repeat
+q<letter> starts macro recording. Second "q" stops recording. <number>@<letter> - play macro stored in <letter> <number> of times
+. - repeat last command in normal mode (i.e. yy or dd etc)
+netrw-d - creates new directory from file browser
+netrw-% - creates new file from file browser
+bp|bd # - closes buffer without closing split
+w - jump to the beginning of the next word
+b - jump to the beginning of previous word
+W - jump to the beginning of next NON_BLANK word
+B - jump to the beginning of previous NON_BLANK word
+e - jump to the end of word
+E - jump to the end of NON_BLANK word
+D - delete till the end of the line
+J - concatenate lines (put cursor on first line, press "J" and second line will be merged into first)
+~ - toggle character case
+
+
+iw - inner word (in selection when cursor is somewhere in the middle of word for commands dw, cw, vw, etc.)
+i( - inner bracket, like ([{'"<
+a( - inner bracket with brakets themselves included
+
+<C-w>s - split current window horizontally, loading the same file there
+<C-w>v - same only vertically
+:sp filename - split horizontally, loading filename
+:vsp filename - split vertically
+:sb <# or filename> move existing buffer (with number # or containing filename) to horisontal split window
+:vert sb <# or filename> - to vertical split
+:q - close currently active window
+:on[ly] - close all windows except current
+
+<C-w>w - cycle through windows
+<C-w>o - make current window full screen closing all opened splits (similar to :on command)
+<C-w>h[jkl] - move focus left,down,up,right 
+    (map <C-h> <C-w>h for simplicity)
+
+<C-w>+ increase height of current window by 1 line
+<C-w>- decrease
+<C-w>_ maximize height
+<C-w>| maximize width
+<C-w> > change vertical size
+:30winc>
+:30winc< - easier to type
+
+inoremap <A-h> <C-o>h - use Alt-h in insert mode to move left
+
+insert mode completion:
+<C-p> complete selection forward
+<C-n> complete selection backward
+<C-y> accept completion
+<C-e> abandon completion
+<C-l>
+<C-x>
+
+------substitute command
+:s/what/to_what/ - first occurence in current line
+:s/what/to_what/g - all occurences in current line
+:%s/what/to_what/g - all occurences in file
+:%s/what/to_what/gc - same as above with confirmation
+
+for complex searches, make search with "/" and then execute command:
+/what-to-find
+:s//what-to-replace/
+
+repeat last command press "."
+u - undo last edit
+U - undo all changes to edited line
+Ctrl-R - redo (undo undo)
+
+
+--------plugins
+unimpared.vim
+[<space> add empty line before line with cursor
+]<space> add empty line after

@@ -1,0 +1,56 @@
+Logging on different port (default is 22)
+Client:
+Connect to server
+~$ ssh user@server_name
+Connect on different port
+~$ ssh user@server_name -p###
+Close connection
+~$exit
+
+Connect with alias:
+~$ ssh alias
+Define alias in ~/.ssh/config file
+----
+Host alias
+HostName server_name
+Port ###
+User user
+----
+
+Server:
+in file /etc/ssh/sshd_config:
+replace Port 22 with Port ###
+
+
+Logging with crypto keys
+Generate keys:
+For protocol type 1 (with rsa keys)
+~$ssh-keygen (note not to use passphrase)
+For protocol type 2 (with user-selected encryption type)
+~$ssh-keygen -t <encryption-type>
+chmod 600 <private_key_name>
+keys are stored in ~/.ssh/ directory
+
+Upload keys to remote server:
+~/.ssh/scp <rsa_pub_key_name> user@server_name:./<rsa_pub_key_name>
+~/.ssh/scp <other_pub_key_name> user@server_name:./<other_pub_key_name>
+This will place keys in home directory on remote server
+
+Configure keys on server:
+Log to server via ssh or telnet with name/password
+remote~$ mkdir .ssh
+remote~$ chmod 700 .ssh
+remote~$ cd .ssh
+remote~$ touch authorized_keys
+remote~$ chmod 600 authorized_keys
+remote~$ cat ../<rsa_pub_key> >> authorized_keys
+remote~$ rm ../<rsa_pub_key>
+remote~$ touch authorized_keys2
+remote~$ chmod 600 authorized_keys2
+remote~$ cat ../<other_pub_key> >> authorized_keys2
+remote~$ rm ../<other_pub_key>
+
+Ready to go:
+ssh -1 user@server - using protocol 1 (rsa)
+ssh -2 user@server - using protocol 2 (whatever)
+
