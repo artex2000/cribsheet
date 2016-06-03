@@ -16,6 +16,7 @@ HostName server_name
 Port ###
 User user
 ----
+chmod 600 ~/.ssh/config (make sure owner and permissions are correct)
 
 Server:
 in file /etc/ssh/sshd_config:

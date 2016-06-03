@@ -1,0 +1,20 @@
+Deal with long path name in bash promptmo
+
+# define the awk script using heredoc notation for easy modification
+MYPSDIR_AWK=$(cat << 'EOF'
+BEGIN { FS = OFS = "/" }
+{ 
+   sub(ENVIRON["HOME"], "~");
+   if (length($0) > 16)
+      print $1,$2,"...",$NF
+   else
+      print $0
+}
+EOF
+)
+
+# my replacement for \w prompt expansion
+export MYPSDIR='$(echo -n "$PWD" | awk "$MYPSDIR_AWK")'
+
+# the prompt: [0 user@host ~]$
+export PS1='[$? \u@\h $(eval "echo ${MYPSDIR}")]$ '

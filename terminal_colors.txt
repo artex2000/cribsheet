@@ -44,3 +44,6 @@ https://github.com/seebi/dircolors-solarized
 Put one of files into ~/.dir_colors/ directory
 add the following command to .profile
 eval `dircolors ~/.dir_colors/filename
+
+for Fedora LS_COLORS setup script is already present in /etc/profile.d/colors.sh
+Just put .dircolors file (or symlink) to home directory

@@ -5,8 +5,11 @@ bash shortcuts: Alt-F - forward a word, Alt-B - back a word, Alt-d - delete word
         !! - repeat last command (sudo !!)
         
 hexdump -v -C filename
-
+https://www.suse.com/documentation/sles11/book_kvm/data/kvm_qemu_virtfs.html qemu docs
 ln -s target link_name
+
+cp --parents filename /newdir - copy file into new dir preserving relative path
+mkdosfs /dev/sdx1 -s 16 -F 32 - format partition with VFAT32
 
 tr 'char' 'char2' <file1 > file2 replaces all chars with char2
 tr -d 'char' <file1 > file2 - removes char
@@ -25,6 +28,16 @@ mount -t cifs //server/path/to/folder
     file_mode=0777
     dir_mode=0777   to have read/write access
 all options separated by comma, no spaces
+
+mount image created by dd command:
+1. Determine partition offset:
+$ fdisk -l imagename.img
+Check the start block value. Offset is calculated as StartBlockValue*BlockSize (usually 512b)
+$ mount -o ro,loop,offset=<calculated value> imagename.img /mnt_point.
+mount distressed image:
+$ losetup --offset <calculated offset> /dev/loop<n> imagename.img
+$ fsck /dev/loop<n> - fix file system errors if any
+$ mount /dev/loop<n> /mnt_point
 
 Bash replace extention
 for file in *.ext1
@@ -52,6 +65,10 @@ ctrl+l : clear the screen :
 ctrl+K : clear the line after cursor ;                  (d$ in vi mode)
 ctrl+w : erase word before cursor ; //including all non-space characters
 alt-d : delete word
+
+Separate debug and program output in gdb
+(gdb) tty /dev/pts/??     (get device name by typing "tty" in terminal, where you want program output to be)
+(gdb) show inferior-tty
 
 
 

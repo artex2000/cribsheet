@@ -13,13 +13,17 @@ Ctrl-X decrement number
 *-jump forward to same word
 #-jump back to same word
 
+zz - put current line in the middle of the edit window
+
 :set ffs=dos - will get rid of ^M at the and of the line
 ma - set local mark; 'a - jump to local mark
 mA - set global mark; 'A - jump to global mark (may be in different file)
 "<letter> - select clipboard with name <letter> to store copied/cut text: "ayy - copy line into clipboard <a>; "ap - paste line from clipboard <a>
 q: - open command window to browse previous commands to repeat
 q/ - open command window to browse previous searches to repeat
+
 q<letter> starts macro recording. Second "q" stops recording. <number>@<letter> - play macro stored in <letter> <number> of times
+
 . - repeat last command in normal mode (i.e. yy or dd etc)
 netrw-d - creates new directory from file browser
 netrw-% - creates new file from file browser

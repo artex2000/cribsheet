@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.65"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta content="Steve Litt" name="author"/>
+    <meta name="keywords" content="Linux,Void,Void Linux,Tips"/>
+    <meta name="description" content="Tips for using Void Linux."/>
+    <title>Void Linux Tips</title>
+    <link href="../linuxlibrary.css" type="text/css" rel="stylesheet"/>
+    <style type="text/css">
+div.utpcenterer thead{font-weight: bold; font-size: 110%;}
+body{font-size: 100%;}
+
+div.collist{display: inline-block; vertical-align: text-top;}
+
+img.w400{width="100%"; max-width="300px"; margin="0px"; padding="0px";}
+table#keystrokes td{border-bottom-style: solid; border-bottom-width: 2px;}
+table#keystrokes td{padding-bottom: 1ex; padding-top: 1ex; padding-right: 0.5em; vertical-align: middle;}
+</style>
+
+
+<link href="../../monthfea.css" type="text/css" rel="stylesheet" />
+<script language='javascript' src='../../monthfea.js'></script>
+
+
+
+  </head>
+<body  onload="loaddiv()" >
+<div class="utpcenterer">
+<div class="midcolumn">
+
+
+<p class="presents"><a href="../../troubleshooters.htm">Troubleshooters.Com</a><sup class="tm">&#174;</sup>,
+<a href="../index.htm">Linux Library</a>, and <a href="index.htm">T.C Void Linux Subsite</a> Present:</p>
+<p class="title">Void Linux Tips</p>
+
+<p class="copyright"><a href="../../cpyright.htm">Copyright <span
+class="copyright_symbol">&#169;</span> 2015</a> by Steve Litt</p>
+
+
+
+<div class="monthfea" id="monthfea">
+<p class="monthfea">See the <a href="http://www.troubleshooters.com/bookstore/">Troubleshooters.Com Bookstore</a>.</p>
+</div>
+
+
+
+
+<p class="contents_title">Contents:</p>
+
+<ul class="contents">
+<li><a href="#introduction">Introduction</a></li>
+
+<li><a href="#summary">Summary</a></li>
+</ul>
+
+
+
+
+
+
+
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Here are some tips for installing and using Void Linux:</p>
+
+<ul class="contents">
+<li><a href="#void_installer">Install with <span class="code">void-installer</span>, as root.</a></li>
+<li><a href="#fromdvd">Install from DVD unless you really know what you're doing.</a></li>
+<li><a href="#distrowatch">Consult Distrowatch Package Management.</a></li>
+<li><a href="#xlocate">xlocate: The Ninja Package Finder</a></li>
+<li><a href="#irc">Consult #xbps on Freenode for intelligent help</a></li>
+<li><a href="#ircignore">Shut off void-pkgs and xbps-builder</a></li>
+<li><a href="#update">On install problems, <span class="code">xbps-install -Su</span></a></li>
+<li><a href="#rootbash">Set root's shell to bash</a></li>
+
+<li><a href="#user">Create a normal user</a></li>
+<li><a href="#pager">Set the default pager</a></li>
+<li><a href="#ip_commands">Get familiar with the <span class="code">ip</span> commands.</a></li>
+<li><a href="#gotchamac">Gotcha: Networking Void at McDonald's</a></li>
+<li><a href="#wifi">Set up wifi networking with wpa_supplicant.</a></li>
+<li><a href="#elinks">Install <span class="code">elinks</span>  and <span class="code">wgetpaste</span></a></li>
+<li><a href="#textirc">Install text irc clients</a></li>
+<li><a href="#runit">Understand <span class="code">runit</span> and how Void uses it.</a></li>
+<li><a href="#bpi">Change the screen BPI</a></li>
+<li><a href="#prepath">Add a normal user directory to the path</a></li>
+<li><a href="#dmenu">Install a dmenu interface</a></li>
+<li><a href="#backup">Back up studiously.</a></li>
+<li><a href="#audio">Enable video, sound, Youtube</a></li>
+<li><a href="#mixaudio">Fix audio card monopolization</a></li>
+<li><a href="#xombrero">Get Xombrero Working Right</a></li>
+<li><a href="#defbrowse">Set Your Default Browser</a></li>
+<li><a href="#clementine">Fix Gstreamer Problem in Clementine</a></li>
+<li><a href="#xkeyboard">Fix Keyboard Doesn't Work in X</a></li>
+<li><a href="#bluefish">Compile Bluefish for zencoding.</a></li>
+<li><a href="#dovecot">Enable Dovecot</a></li>
+<li><a href="#udftools">Install Udftools</a></li>
+<li> <a href="#perldatetime">Installing Perl DateTime.pm on Void</a></li>
+<li><a href="#contribute">Contribute to Void</a></li>
+</ul>
+
+
+
+
+
+
+
+
+<h1 id="void_installer">Install with <span class="code">void-installer</span>, as root.</h1>
+
+<p>Void is a wonderful distro with lousy documentation. Some docs don't tell you what program to run, on the live CD, to install. Other docs make it seem like your only choice is doing a <span class="code">chroot</span> install. This is usually not true.</p>
+
+<p>Typically, the easiest way to install Void Linux once you have your hardware set up is to boot the Void Linux live DVD, become root, and then run the program <span class="code">void-installer</span>, and for the most part follow its prompts. <span class="code">void-installer</span> has an easy to follow menu interface.</p>
+
+<p>Here's how you become root on a tty or GUI terminal on the live Void CD:</p>
+
+<pre class="code">sudo su -</pre>
+
+<p>No password is needed.</p>
+
+<p>On the installation difficulty scale between Lubuntu and Gentoo/Funtoo, <span class="code">void-installer</span> is significantly closer to Lubuntu. The main challenges, on lowest common denominator installs using MBR boot without LVM or LUKS, is that you'll be given <span class="code">cfdisk</span> to partition your disk. As always, I recommend you first do a rehearsal install, with no fancy stuff, on a Qemu VM guest.</p>
+
+<p>By the way, toward the end of the install, in the "Filesystems" part of the install, the dialog box gives you no way to signify "Done", so when you're done  you need to select "Back" to go back to the menu. When you get to this point, and perhaps do an extra iteration, it will be obvious what to do.</p>
+
+
+
+
+
+
+<h1 id="fromdvd">Install from DVD unless you really know what you're doing.</h1>
+<p>I'm an elder in the Church of the Known State, and as such, I like installing off a DVD rather than straight off a Git repository. Yes, I know that Void is a rolling release, and the first time I upgrade my known state will be history, but I <em>still</em> prefer to go off a Void live DVD.</p>
+
+<p>Once the live DVD boots up, I just run <span class="code">void-installer</span>, and I'm on my way.</p>
+
+
+
+
+
+
+
+<h1 id="distrowatch">Consult Distrowatch Package Management.</h1>
+
+<p>Consult <a
+    href="http://distrowatch.com/dwres.php?resource=package-management">http://distrowatch.com/dwres.php?resource=package-management</a>.</p>
+
+<p>Most distros (notoriously excluding Arch and Gentoo) have lousy documentation. Void takes it the extra mile, with little official documentation, much of which is out of date and/or contradictory. This creates real difficulty for the person not knowing a specific package manager.</p>
+
+
+<p>No problem. DistroWatch.Com has a wonderful "Rosetta Stone" for package managers, at <a target="_blank" href="http://distrowatch.com/dwres.php?resource=package-management">http://distrowatch.com/dwres.php?resource=package-management.</a>. This document has the right mix of commands: Enough to do what you usually need to do, without obfuscating those necessary commands in a sea of geeky, seldom used commands. And better yet, because this page shows the specific package manager command, in each of more than 10 package managers, for each of these often used tasks, if you know any package manager, you can figure out how to do it in Void's package manager, <span class="code">xbps</span>. For that matter, you can figure out how to do it in <em>any</em> listed package manager.</p>
+
+<p>When you use <span class="code">xbps-install</span>, all you need to do for the package name is type enough to uniquely identify it, starting from the front. So to install the bitchx package, all that's needed is:</p>
+
+<pre class="code">xbps-install bitchx</pre>
+
+<p>However, the following <em>fails</em> to install <span class="code">sshfs</span>:</p>
+
+<pre class="code">xbps-install sshfs</pre>
+
+<p>The problem is, the actual package containing <span class="code">sshfs</span> is actually called <span class="code">fuse-sshfs-2.5_4</span>, so the following command would have been sufficient:</p>
+
+<pre class="code">xbps-install fuse-sshfs</pre>
+
+
+<p>But of course, there's no way of knowing this in advance, with out a lot of research. This is why the <span class="code">xbps-query</span> command is included. There are a few especially valuable search commands that aren't immediately obvious. For instance, to search the repositories for the exact package name of something, perform the following command:</p>
+
+<pre class="code">xbps-query -Rs package_name_fragment</pre>
+
+<p>In the preceding, package_name_fragment is part of a string you suspect will be in the package name. For instance, <span class="code">fuse-sshfs</span> can be found using <span class="code">sshfs</span> as the fragment.</p>
+
+<p>Sometimes you need to know the name of the package providing a certain file. This is not obvious, and it can often take significant time to search the repositories if the file's not already on your computer. If the file's on any Void Linux computer you can reach, your best bet is to find the package name there, with the following command:</p>
+
+<pre class="code">xbps-query --regex -o filename</pre>
+
+<p>In the preceding, "filename" doesn't include the path to the filename. So it would be something like "sshfs" or "sfdisk". What enables the use of only the filename is the <span class="code">--regex</span> option.</p>
+
+<p>In situations where the file is not installed locally, and there's no available computer with it installed locally, and you need to install a file, but the package name bears little resemblance to the name of the file, you need to search the repositories for a package with that file: A <em>very</em> slow process. I can't say how slow, because I've never let such a search run to completion, but if fortune smiles, the right package name could be delivered to you in four or five minutes:</p>
+
+<pre class="code">xbps-query --regex -Ro libphonon</pre>
+
+<p>As each result comes in, you can test it with <span class="code">xbps-query -Rf</span>.</p>
+
+<p>These repository searches for included filenames are so slow that almost any alternative is superior. If you know of a command that returns a packagename faster, when fed an uninstalled filename, please <a href="../../email_steve_litt.htm">email me</a>.</p>
+
+<p>One more thing. In this document I say some pretty unkind things about Void's documentation. Well, I'd rather have bad documentation of great software, rather than the other way around. There will always be guys like me around to write better documentation, if the software's good enough to care about. And Void Linux is great software.</p>
+
+
+
+
+
+
+
+<h1 id="xlocate">xlocate: The Ninja Package Finder</h1>
+<p>The commands in the <a href="#distrowatch">preceding section</a> are good, but sometimes insufficient to find a needed package. That's why Void Linux comes with <span class="code">xlocate</span>. <span class="code">xlocate</span> is a caching package searcher, so its database must be built and updated from time to time. It's not in Void's base system, so you'll need to install it. It's in the <span class="code">xtools</span> package, so here's how you install it:</p>
+
+<pre class="code">xbps-install xtools</pre>
+
+<p>Now that it's installed, you must build the database. Building the database takes over an hour, maybe several hours. So build it just before you leave for the day or go to bed at night. To build it, log in as root and perform the following following two commands:</p>
+
+<pre class="code">
+xbps-install -Su
+xlocate -u
+</pre>
+
+<p>If the <span class="code">xlocate -u</span> command gripes about not being able to create a database file, use <span class="code">mkdir</span> to create the directory tree listed in the error message. Then rerun the command, and it will sit there and appear to do nothing. If you run the <span class="code">top</span> command, you'll see that <span class="code">xbps-query</span> is consuming quite a bit of CPU. That's the <span class="code">xlocate&#160;-u</span> command at work. When the database building is finished, <span class="code">xlocate</span> finishes.</p>
+
+<p>Once the database is built, you can locate any package in the repository by issuing the following command <em>as root</em>:</p>
+
+<pre class="code">xlocate searchstring</pre>
+
+<p><span class="code">searchstring</span> can be a part of the package name, or a file that gets installed, or a key, or almost anything, and the command produces lots and lots of results. Maybe a confusing amount of results. Often you can simplify the command's result list using the following command:</p>
+
+<pre class="code">xlocate mkisofs | cut -f1 | sort -u</pre>
+
+<div class="danger">
+<p class="title">Danger!</p>
+<p>Never run <span class="code">xlocate&#160;-u</span>  without first running <span class="code">xbps-install -Su</span>! Doing so risks making your cache database incomplete, so that subsequent <span class="code">xlocate</span> searches erroneously find no matching packages. This happens often, but not always, and if you're not aware of what's going on under the hood, you could end up thinking that <span class="code">xlocate</span> is more intermittent than a cold solder joint.</p>
+</div>
+
+<h2>Xlocate gotchas and landmines</h2>
+<p>There's no <span class="code">xlocate</span> man page. <span class="code">xlocate&#160;-h</span> gives you information for the plain old <span class="code">locate</span> command, which isn't what you need. The information at <a href="https://github.com/voidlinux/documentation/wiki/FAQ">https://github.com/voidlinux/documentation/wiki/FAQ</a> doesn't discuss the issue of needing to <span class="code">xbps-install&#160;-Su</span> before rebuilding the <span class="code">xlocate</span> database, nor does it tell you the command syntax and arguments. One could be forgiven for throwing up one's hands in frustration and not using <span class="code">xlocate</span>. Hence this document section.</p>
+
+<p>Just make sure you always do <span class="code">xbps-install&#160;-Su</span> immediately before doing <span class="code">xlocate&#160;-u</span>. This should prevent corruption of the <span class="code">xlocate</span> database. Always perform these two commands as root.</p>
+
+<p>What <span class="code">xlocate</span> really is is a shellscript capable of two tasks. With the <span class="code">-u</span> argument, it performs a (very lengthy) <span class="code">xbps-query -Ro '*'</span> command and puts it in a database file searchable with the ordinary <span class="code">locate</span> command. If the argument is anything else, it performs a <span class="code">locate</span> command on the database file, which is <span class="code">$HOME/.cache/xlocatedb</span>.</p>
+
+<h2>Using xlocate as a normal user</h2>
+<p>You probably want to search, with <span class="code">xlocate</span>, as a normal user. <em>Do not</em> try to build an <span class="code">xlocate</span> database as the normal user. Instead, after building it as root, do the following as root:</p>
+
+<pre class="code">
+cp /root/.cache/xlocatedb /home/norm/.cache/
+chown norm.norm /home/norm/.cache/xlocatedb
+</pre>
+
+<p>In the preceding, obviously "norm" is the username of the normal user, so change all instances of "norm" to the needed username. If that user doesn't yet have a <span class="code">.cache</span> directory, you'll need to create it and set its owner to the normal user.</p>
+
+
+
+
+
+
+<h1 id="irc">Consult #xbps on Freenode for intelligent help</h1>
+<p>The IRC channel for Void Linux is called #xbps. Fire up an IRC client, log into Freenode, and join #xbps. But before asking anything, be sure you've searched the fantastic web for the answer and any relevant material. Void isn't Ubuntu, and #xbps isn't there for hand-holding.</p>
+
+<p>Interesting story: A few days ago I asked on #xbps how to install Bluefish with Python compiled in, so that Bluefish would have its flagship Zencoding feature. One person apparently tightly connected to the Void project gave me a package-manager method I didn't quite understand, and then asked another person why Bluefish wasn't compiled with Python by default. An update a couple days later made my Bluefish Python-enabled, with Zencoding.</p>
+
+<p>This isn't to say that #xbps is there to change the Void project to meet your needs, but it <em>does</em> indicate that the people on #xbps are listening when you ask a question.</p>
+
+
+
+
+
+
+
+
+
+<h1 id="ircignore">Shut off void-pkgs and xbps-builder</h1>
+<p>On the #xbps IRC channel on Freenode, a whole lot of messages from bots void-pkgs and xbps-builder scroll by. If you're like me, these obscure real human questions and answers. If you're like me, you'll shut off these bot messages with the following commands:</p>
+
+<ul>
+<li>/ignore void-pkgs</li>
+<li>/ignore xbps-builder</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+<h1 id="update">On install problems, <span class="code">xbps-install -Su</span></h1>
+<p>Sometimes you'll have installs crash in the middle, and you might think "oh, this thing is buggy." The error messages are sometimes unhelpful.</p>
+
+<p>When Void installations crash on you, before trying to figure out anything else, update your software by performing the following two commands, in the following order:</p>
+
+<pre class="code">xbps-install -Su</pre>
+
+<p>3/4 of the time, after performing those two commands, your install problem vanishes.</p>
+
+
+
+
+
+
+
+
+<h1 id="rootbash">Set root's shell to bash</h1>
+<p><span class="code">void-installer</span> wisely sets the shell for the root user to <span class="code">sh</span>. This is better for security. So if your situation requires prioritizing security, it's best to leave well enough alone and skip the rest of this section.</p>
+
+<p>For desktop users and experimenters, the big gain in <span
+class="code">bash</span> usability is often worth its smaller security
+cost. If that's your situation, it's best to switch root's shell to
+<span class="code">bash</span> and do it early on. Simply log in as
+root, edit <span class="code">/etc/passwd</span>,
+and on the line starting with "root", change <span class="code">/bin/sh</span>
+to <span class="code">/bin/bash</span>.</p>
+
+
+
+
+
+
+
+
+
+<h1 id="user">Create a normal user</h1>
+<p>The <span class="code">void-installer</span> program doesn't walk you through creating a normal user. So soon after installation, perform the following steps to create a normal user (in this example, called "myuid"):</p>
+
+<pre class="tinycode">
+[root@acervoid ~]# <span class="userinput">useradd myuid</span>
+[root@acervoid ~]# <span class="userinput">passwd myuid</span>
+[root@acervoid ~]# <span class="userinput">usermod -aG audio,video myuid</span>
+</pre>
+
+
+
+
+
+
+
+
+
+<h1 id="pager">Set the default pager</h1>
+<p>The default pager is what allows you to scroll down (and in some cases up) while you look at man pages and perform certain other tasks. Most Linux distros use <span class="code">less</span> as the default pager, but Void uses the  <span class="code">more</span> program, which was invented some time before World War I and can page forward but not backward.</p>
+
+<p>The <span class="code">less</span> program uses Vim keystrokes, and can page both forward and backward. Which is why most people prefer it. If you want to change your default pager, append the following line to your <span class="code">.bashrc</span> program:</p>
+
+<pre class="code">export PAGER=less</pre>
+
+<p>In order to test your new pager setting, run <span class="code">bash</span> from the command prompt in order to start a new Bash session, and then read a man page and make sure it pages with <span class="code">less</span>. In the man page, verify that <span class="code">j</span> scrolls one line forward and <span class="code">k</span> scrolls one line backward. If those scrolls work, you're paging with <span class="code">less</span>.</p>
+
+<p>In order to make your new pager available everywhere, log out of X, log out of the Virtual Terminal (tty1 or whatever) from which you ran X, then log in and run X again. If you boot directly to X, log out of X and back in.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="ip_commands">Get familiar with the <span class="code">ip</span> commands.</h1>
+<p>This advice is valid in any distro. Doesn't it seem like networking is different in every distro, and that over time distros change how you signify networks? It's almost impossible to keep up with if you use multiple distros. Sometimes you'll need distro-independent methods of network troubleshooting, and that's where the <span class="code">ip</span> command comes in.</p>
+
+<div class="note">
+<p class="title">Note:</p>
+<p>The <span class="code">ifconfig</span> command is deprecated. It's not even installed by default on Void Linux. Try not to use <span class="code">ifconfig</span>, but use the <span class="code">ip</span> command instead.</p>
+</div>
+
+<div class="note">
+<p class="title">Note:</p>
+<p>Some of the following commands might not be necessary in a perfectly functional Void Linux setup, and might not be the idiomatic Void Linux way of doing things. What I like about them is they work everywhere, and are unlikely to cause problems if run on an already working system. With an understanding of <span class="code">ip</span> commands, you can troubleshoot most network problems.</p>
+</div>
+
+<h2>Getting information</h2>
+<p>To see a list of all network devices, perform the following command:</p>
+<pre class="code">ip link</pre>
+
+<p>The preceding gives you the names of all the devices, and at least a little information as to their current state. This info is all the more valuable now that we have the devices with names like <span class="code">enp6s1</span> or <span class="code">wlp6s2</span>.</p>
+
+<p>To see a list of the network devices with their IP4 addresses (or not, if they're down), perform the following command:</p>
+
+<pre class="code">ip addr</pre>
+
+<p>The following short shellscript initializes wired network device <span class="code">enp6s1</span> to 192.168.100.188 with a default route of 192.168.100.96, brings up the localhost interface, and sets the hostname to whatever is in <span class="code">/etc/host</span>:</p>
+
+<pre class="smallcode">
+#!/bin/sh
+hostname=`grep -v "^\s*#"  /etc/hostname | head -n1`
+ip link set dev lo up
+ip link set dev enp6s1 down
+ip addr add 192.168.100.188/24 dev enp6s1
+ip link set dev enp6s1 up
+ip route add default via 192.168.100.96
+</pre>
+
+<p>The preceding shellscript's syntax is difficult to memorize, but it's important you do so, because these are the kind of commands you use to troubleshoot a "no network" situation. Three are <span class="code">ip link</span> commands that bring the linked device either up or down. So you "set dev enp6s1 up", etc. If you memorize the <span class="code">ip link</span> part, that makes sense.</p>
+
+<p>One command is an <span class="code">ip addr</span> command, used to add an address to a device. It's kinda-sorta self-explanatory. <em>Be sure</em> to specify the netmask number (24 in this example) on the <span class="code">ip addr</span> command, because if the netmask number is missing, it defaults the netmask number to 32, which means a subnet of one: the address of the device itself. And since it can't contact anything outside its subnet, the networking remains mute.</p>
+
+<p>Last but not least is the <span class="code">ip route</span> command used to add a default route. The syntax at first seems a little weird, but if you think of "default" in terms of an actual IP address, it starts to make sense.</p>
+
+<p>On pretty much any distro, it's good to have these commands memorized, so that even if the distro's wonderful distro-specific networking config doesn't work, you can investigate and probably bring up the network with just <span class="code">ip</span> commands.</p>
+
+<h2>Getting syntax help from <span class="code">ip</span> itself</h2>
+
+<p>If you type only <span class="code">ip</span> on the command prompt, the first line of information it gives you is:</p>
+
+<pre class="code">Usage: ip [ OPTIONS ] OBJECT { COMMAND | help }</pre>
+
+<p>It then goes on to define all the preceding. But just as a rule of thumb, options are things that begin with dashes, and I personally haven't found them all that necessary. The things they call objects are what I'd personally call subcommands: <span class="code">link</span>,  <span class="code">addr</span>,  and <span class="code">route</span>. What they call "commands" start with simple verbs: <span class="code">set</span>,  <span class="code">add</span>,  <span class="code">del</span> and the like. And then the next item on the command is <em>what</em> the verb applies to (<span class="code">dev</span> followed by a device name, or an IP address or alias like <span class="code">default</span>, and last but not least what's done to it.)</p>
+
+<p>With the preceding as an overall understanding of <span class="code">ip</span> commands, any needed specific  syntax can be found with command like the following:</p>
+
+<ul>
+<li><span class="code">ip link help</span></li>
+<li><span class="code">ip addr help</span></li>
+<li><span class="code">ip route help</span></li>
+</ul>
+
+<p>This section barely scratched the surface of the capabilities of the <span class="code">ip</span> command set, but it's enough for basic troubleshooting and enough to get a network connection if hardware and driver eixist. The technologist mastering the <span class="code">ip</span> command set can quickly troubleshoot almost any problem.</p>
+
+
+
+
+
+
+
+
+
+<h1 id="gotchamac">Gotcha: Networking Void at McDonald's</h1>
+<p>If you do networking the way I do networking, after boot your laptop's Ethernet port is up and configured with a static IP address. This isn't a problem in most situations, but when you go to one of those places with no-security wifi hotspots that validate you through a website, it can be a problem, and a hard diagnosis if you don't know what you're looking for.</p>
+
+<p>When you bring up the McDonald's free wifi, you're not connected, not really, until you go to a browser and say yes to McDonald's terms of service. Normally, their terms of service url pops up on any page you try to go to, but if you have an extra IP address, like the one from your configured and static IP address, the terms of service website won't pop up.</p>
+
+<p>Before you use <span class="code">wpa_gui</span> to access their wifi hotspot (this is discussed in a later article), be sure to disable your Ethernet IP address. It's as simple as performing the following command as root:</p>
+
+<pre class="code">ip link set dev eno1 down</pre>
+
+<p>If you don't feel like logging in as root every time you issue an ip command, you could set it in sudoers as a nopasswd command.</p>
+
+<p>Any time you're having trouble with wifi on the road, bring down your Ethernet. It might not fix the problem, but it will sure eliminate a lot of variables.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="wifi">Set up wifi networking with wpa_supplicant.</h1>
+<p>Wifi is has always been problematic. It's problematic now. It's a problem on Windows, it's a problem on Linux.  It's less of a problem on "just-works" distros like Ubuntu because of their superior hardware detection, but it's still a problem. It's actually a problem with two different components:</p>
+
+<ol>
+<li>Managing the hardware's drivers and firmware.</li>
+<li>Managing, choosing, and passwording the list of wifi networks.</li>
+</ol>
+
+<p>This section is about component #2. Software solutions <span class="code">wpa_supplicant</span>, Wicd, and NetworkManager all perform the duties of component #2. And there are plenty more. This section is only about managing wifi networks with <span class="code">wpa_supplicant</span>.</p>
+
+<p>A 5000 word essay could be written about the politics of Linux and competitors <span class="code">wpa_supplicant</span>, Wicd, and NetworkManager. Suffice it to say that with the advent of systemd and increased scrutiny of dbus, <span class="code">wpa_supplicant</span>, which requires neither, has been gaining mindshare.</p>
+
+<p>Traditionally, <span class="code">wpa_supplicant</span> has been complicated and difficult to use, an impossibility for all but the most POSIXLY endowed power user. Void Linux has made <span class="code">wpa_supplicant</span> usage almost trivial.</p>
+
+<p>Void's wpa_supplicant package creates files <span class="code">/etc/sv/wpa_supplicant/run</span> and <span class="code">/etc/sv/wpa_supplicant/conf</span>, so that <span class="code">wpa_supplicant</span> can be run as a daemon that restarts after crashing. Traditionally crashing under certain well known circumstances was a problem with <span class="code">wpa_supplicant</span>, but because Void Linux uses <span class="code">runit</span> to supervise <span class="code">wpa_supplicant</span>, it just restarts: No problem, either technically or as perceived by the user.</p>
+
+<h2>Prerequisite: Install <span class="code">dhcpcd</span></h2>
+
+<p>Wifi without DHCP is like houses without roofs. A DHCP client must be installed, Void Linux uses the excellent dhcpcd client, so perform the following command:</p>
+
+<pre class="code">xbps-install dhcpcd</pre>
+
+<p>Then set up <span class="code">dhcpd</span> to run, on boot, continuously, by enabling it in runit with the following command:</p>
+
+<pre class="code">ln -s /etc/sv/dhcpcd \
+  /run/runit/runsvdir/current/dhcpcd</pre>
+
+<p>That's it. The <span class="code">dhcpcd client runs, in the background, continously, now, and after every reboot.</span></p>
+
+
+
+<h2>Prerequisite: Set Up <span class="code">wpa_supplicant</span></h2>
+
+<p>Before you enable the daemon, be sure to change the <span class="code">run</span> and <span class="code">conf</span> files to reflect the true name of the Wifi device. This is found with the following simple command:</p>
+
+<pre class="code">ip link</pre>
+
+<p>The entry with the name beginning with "wl" is the right one. In the <span class="code">run</span> and <span class="code">conf</span> files, change the value of WPA_INTERFACE to match that name. Then symlink:</p>
+
+<pre class="code">ln -s /etc/sv/wpa_supplicant \
+  /run/runit/runsvdir/current/wpa_supplicant</pre>
+
+<p>The daemon should now be running, which can be verified by running the <span class="code">sv status</span> command on <span class="code">wpa_supplicant</span>, logged in as root:</p>
+
+<pre class="tinycode">
+[root@littlap ~]# <span class="userinput">sv status wpa_supplicant</span>
+run: wpa_supplicant: (pid 617) 9843s; run: log: (pid 614) 9843s
+[root@littlap ~]#
+</pre>
+
+
+<p>The preceding says it's been running, and it's been running for 9843 seconds. It's working.</p>
+
+
+<h2><span class="code">wpa_supplicant</span> and <span class="code">wpa_gui</span></h2>
+
+<p>The next step is to interface with <span class="code">wpa_supplicant</span> using the <span class="code">wpa_cli</span> command line interface client, or the much easier <span class="code">wpa_gui</span> interface. Only <span class="code">wpa_gui</span> is suitable for the average user, so it's the only one discussed in this section.</p>
+
+
+
+
+<p>The <span class="code">wpa_supplicant</span> server and its associated CLI and GUI clients were released in 2003 to help navigate and work with wifi networks. It worked well when used right, but using it right took some knowledge. NetworkManager, which came out in 2004, was more user friendly, but failed in some edge cases where <span class="code">wpa_supplicant</span> succeeded. The cool thing about NetworkManager is it was available as an easy to use tray icon on many window managers. 2006 brought Wicd, another user friendly way to keep track of wifi networks. In my opinion it's a little more reliable than NetworkManager, but as far as I know lacks the handly little tray icon. Which of course can be an advantage if your window manager has no panel.</p>
+
+<p><span class="code">wpa_supplicant</span> is tricky, crashes under certain well defined circumstances, and generally requires more attention. Its advantage over the others, however, is you can use it 100% from the command line, edit its config file to insert new networks, and connect to pretty much any wifi network in any situation. When Wicd and NetworkManager fail, <span class="code">wpa_supplicant</span> is the go-to tool.</p>
+
+<p>But <span class="code">wpa_supplicant</span> is too high maintenance for normal users. As Wicd and NetworkManager improved, <span class="code">wpa_supplicant</span> was all but abandoned, existing as only a memory of those in the business a decade ago. Then NetworkManager started requiring systemd, and a lot of people stopped using it. The dbus system, which always had its detractors and had become more associated in peoples' minds with systemd, is necessary for Wicd. Some turned their attention back to <span class="code">wpa_supplicant</span> for handling lists of Wifi networks. So did Void.</p>
+
+<h2>The Void Linux <span class="code">wpa_supplicant</span> Implementation</h2>
+
+<p>Void's wpa_supplicant package installs the <span class="code">/etc/sv/wpa_supplicant</span> directory and its <span class="code">run</span> and <span class="code">conf</span> files, so that <span class="code">wpa_supplicant</span> runs as a daemon, correctly, and if it crashes, it restarts instantly. This cures about 90% of the problems people had using <span class="code">wpa_supplicant</span>.</p>
+
+<p>Most of the remaining problems are cured by using <span class="code">wpa_gui</span> to interact with <span class="code">wpa_supplicant</span>. <span class="code">wpa_gui</span> looks like the following:</p>
+
+<img src="images/wpa_gui_curstatus.png"  alt="wpa_gui, Current Status tab" />
+
+<p>The preceding is the "Current Status" tab. From there all you do is connect or disconnect. You can change which wifi network to connect to with the "Network" dropdown. This dropdown is not a list of networks currently in the area, it's a list of networks you've configured. Thus, if you go to a new place, before connecting to a nearby network, you need to configure that nearby network. To do that, you use the "Manage Networks" tab, as shown in the following screenshot:</p>
+
+<img src="images/wpa_gui_manage.png"   alt="wpa_gui, Manage Networks tab" />
+
+<p>So to add a nearby network, on the "Manage Networks" tab you'd click the Scan button, click the Scan button on the resulting screen, and from the list doubleclick the one you want to add to your list of configured networks. See the screenshot for the scan, as follows:</p>
+
+
+<img src="images/wpa_gui_scan_results.png" alt="Scanning the networks"
+width="400px" />
+
+<p>From the scan results list, you can double click the network of your choice, which brings you into the configuration window for that network. You can fill in the passphrase (PSK) and any other necessary information, then click the "Add" button, and this new network becomes a configured network available from your dropdown list. Always remember these two gotchas:</p>
+
+<ol>
+<li>When you reach the "Scan results" window, to get the proper scan results, you must click on the "Scan" button on the <strong>"Scan results window</strong>.</li>
+<li>The dropdown list and the Scan results window show two different sets. The dropdown list shows every network you've ever configured, whether you're currently near it or not. The Scan results window shows every nearby network, whether you've ever configured it or not.</li>
+</ol>
+
+
+<div class="note">
+<p class="title">Note:</p>
+<p>Reading the description of how this work is done in <span class="code">wpa_gui</span>, it's obvious that very little human engineering was performed in making this program. The user must click a scan button then click another scan button to actually perform a scan, and the user is given choices not apropos to his current situation. It takes some time to learn to use this program efficiently, but it's worth it in the end. Also, it wouldn't be difficult for someone with a little bash-foo or Python-foo to make an interface to <span class="code">wpa_cli</span> with much more efficient human-engineering. You know, like a NetworkManager knockoff.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+<h1 id="elinks">Install <span class="code">elinks</span> and <span class="code">wgetpaste</span></h1>
+<p>Internet browsing and downloading are often required before X is successfully installed. Thus the need to install <span class="code">elinks</span> and <span class="code">wgetpaste</span>:</p>
+
+<pre class="code">xbps-install elinks wgetpaste</pre>
+
+<p>Be sure to read the output of <span class="code">wgetpaste&#160;--help</span>.</p>
+
+
+
+
+
+
+
+
+
+<h1 id="textirc">Install text irc clients</h1>
+<p>You might also need to IRC chat online before 
+installing X, so be sure to install one or more text irc clients:</p>
+
+<pre class="code">xbps-install weechat irssi bitchx ii</pre>
+
+<p>The <span class="code">ii</span> client is interesting 
+because it's 
+more about Unix principles and less about hotkeys or special
+commands. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="runit">Understand <span class="code">runit</span> and how Void uses it.</h1>
+<p>The init system used by Void Linux is runit. So, with maximum oversimplification, it could be said to be the equivalent of Sysvinit, systemd, Upstart, OpenRC, Epoch, s6, nosh, perp, etc. Adding just a little differentiation, the preceding group could be divided into those simple enough to install from source, and those only installable via the package manager, at least by a mere mortal. With this distinction, runit is easily and simply installable from source, along with Epoch, s6, nosh and perp. Sysvinit, systemd, Upstart and OpenRC are best installed with package management. Of those, Sysvinit and Upstart have such big and convoluted "init scripts" that a mere mortal might have trouble making or modifying such an init script.</p>
+
+<p>As a further distinction, systemd and Upstart do a lot more than the traditional role of init programs. Systemd does an order of magnitude more. If you're interested in Void Linux, you probably don't think that's a good thing.</p>
+
+<p>Another distinction is that runit, s6, nosh and perp are influenced by Daniel J. Bernstein's <span class="term">daemontools</span> process supervisor software. These programs supervise daemons by putting the daemon in the background <em>themselves</em>. The daemon itself should not put itself in the background when using these programs. This system gives these programs a lot more control over the daemons they supervise, and moves a lot of the LSB style init script complexity into the init system itself, making life simpler for the admin. Another benefit of this system is that writing a daemon becomes as simple as writing a foreground program: If it's run on a terminal, it does its thing and its stdout and stderr show up on the terminal. If it's run by the init system, it does its thing and its stdout and stderr show up in log files.</p>
+
+<h2>Anatomy of an init system</h2>
+<p>This subsection describes a theoretically simple init system. Neither runit nor any of the others listed in this section are this simple. To see how to make a working init system with this simple architecture, <a href="diy/suckless_init_on_plop.htm">click here (long read)</a>. For the short version, see the following diagram:</p>
+
+<img src="images/init_theoretical.svg" min-width="1000px" width="20%" alt="Diagram of theoretical init system" />
+
+<p>In the preceding diagram, PID1 serves as Linux' process #1, the ultimate ancestor of all other processes. Its duties are to run the Process Supervisor, and then keep running, handling any signals that come its way. The Process Supervisor runs all processes meant to be run during boot. Some examples might be <span class="code">sshd</span>, <span class="code">ntpd</span>, <span class="code">wpa_supplicant</span>, <span class="code">chrond</span>, <span class="code">udevd</span>, and of course the virtual terminals tty1 through tty6. If booting directly to GUI, it would also run the window manager.</p>
+
+<p>When the Process Supervisor from a daemontools-inspired init like runit runs a program, it supervises it, to the extent that if the program terminates, the supervisor knows that and reruns it. The Process Supervisor is also capable of starting and stopping the program, or sending it signals.</p>
+
+<p>All of this must be seen in the broader context of the boot itself. The following diagram is an extremely simpified portrayal of the boot process on a Linux system:</p>
+
+<img src="images/boot_theoretical.svg" width="49%" alt="Diagram of a boot" />
+
+<h2>Void/runit Specifics</h2>
+<p>In Void Linux, daemons run by the boot process are started by <span class="code">runit</span>. Runit daemon configurations are defined by directories immediately under <span class="code">/etc/sv</span>. The following is an <span class="code">ls</span> output of my <span class="code">/etc/sv</span> directory:</p>
+
+<pre class="code">
+[slitt@littlap sv]$ ls <span class="userinput">/etc/sv</span>
+acpid           cupsd                   
+agetty-console  dbus                
+agetty-generic  dhcpcd              
+agetty-serial   dhcpcd-eth0         
+agetty-tty1     dmeventd                
+agetty-tty2     docker            
+agetty-tty3     dovecot             
+agetty-tty4     ip6tables
+agetty-tty5     iptables 
+agetty-tty6     lxdm
+agetty-ttyAMA0  sshd     
+agetty-ttyS0    sulogin
+agetty-ttyUSB0  udevd
+alsa            uuidd
+cgmanager       wpa_supplicant
+consolekit      znc            
+cups-browsed    
+[slitt@littlap sv]$
+</pre>
+
+<p>Each of the entries in the preceding directory is subdirectory, and each represents a daemon that can be run. Some are run, some are not. More on that later. The following shows the contents of the <span class="code">cupsd</span> subdirectory:</p>
+
+<pre class="code">
+[slitt@littlap cupsd]$ <span class="userinput">ls</span>
+run  supervise
+[slitt@littlap cupsd]$
+</pre>
+
+<p><span class="code">supervise</span> is a directory managed by <span class="code">runit</span>, and you can ignore it as long as everything works properly. Only during troubleshooting do you need to pay attention to it.</p>
+
+<p><span class="code">run</span> is a shellscript that runs the daemon. The following shows the code for my <span class="code">/etc/sv/cupsd/run</span>:</p>
+
+<pre class="code">
+#!/bin/sh
+exec cupsd -f
+</pre>
+
+<p>That's a run script I made myself, so it's simple and might not work in corner cases. The first line defines the shell, and the second line runs cupsd, in the foreground (that's the meaning of cupsd's <span class="code">-f</span> option), and runs it in the same PID as the <span class="code">run</span> script. Once the daemon is enabled (described later), <span class="code">runit</span> completely manages the daemon.</p>
+
+<p>Now for a little more complicated run script, dbus:</p>
+<pre class="tinycode">
+#!/bin/sh
+[ ! -d /run/dbus ] &amp;&amp; install -m755 -g 22 -o 22 -d /run/dbus
+exec dbus-daemon --system --nofork --nopidfile
+</pre>
+
+<p>On line 2, the preceding looks for <span class="code">/run/dbus/</span>, and if that file doesn't exist, it's created with owner and group dbus, and permissions 755.</p>
+
+<p>On line 3, it runs dbus-daemon in its own PID, with the standard configuration file (<span class="code">--system</span>), run exclusively in the foreground (<span class="code">--nofork</span>), and don't write a PID file. Interestingly, dbus isn't enabled to run at boot on my Void laptop, but instead is started if a window manager requiring it is started.</p>
+
+<p>The following is my <span class="code">/etc/sv/udevd/run</span> file:</p>
+
+<pre class="code">
+#!/bin/sh
+udevadm control --exit
+exec udevd
+</pre>
+
+<p>Pretty self-explanatory. And finally, here is my <span class="code">/etc/sv/wpa_supplicant</span> run script:</p>
+
+<pre class="code">
+#!/bin/sh
+[ -r ./conf ] &amp;&amp; . ./conf
+: ${WPA_INTERFACE:=wlo1}
+exec 2&gt;&amp;1
+exec wpa_supplicant \
+ -c /etc/wpa_supplicant/wpa_supplicant.conf \
+ -i ${WPA_INTERFACE} ${OPTS}
+</pre>
+
+<p>Line 2 executes the <span class="code">./conf</span> file in the <span class="code">/etc/sv/wpa_supplicant</span> directory if there's it's readable. The <span class="code">./conf</span> file does nothing but set environment vars $WPA_INTERFACE and $OPTS.</p>
+
+<p>Line 3 is some shell-foo to set $WPA_INTERFACE to <span class="code">wlo1</span> if running <span class="code">./conf</span> didn't already set it.</p>
+
+<p>Line 4 makes sure that both stderr and stdout are written to this daemon's log file.</p>
+
+<p>Line 5 runs <span class="code">wpa_supplicant</span> in the current process, with the config file named by the <span class="code">-c</span> option, and the network interface set as <span class="code">$WPA_INTERFACE</span>. It also appends all the options in <span class="code">$OPTS</span> onto the end of the command, and of course <span class="code">$OPTS</span> was defined by <span class="code">./conf</span>.</p>
+
+<p>That's it. That's pretty much the most complex run script on my system. Most of these scripts are provided by Void Linux when you install a daemon's package, but if they're not, it's very easy to make your own run script. So when you hear systemd enthusiasts remarking how systemd frees them from all these gruesome init scripts, remember they're talking about the first-seen-in-1983 sysvinit system, not the 2004-invented runit system. It's like a 20 year old runner bragging that he beat a 75 year old man: The systemd enthusiasts should stop doing this because it really makes them look bad.</p>
+
+<h2>Enabling daemons</h2>
+
+<p>As promised, here's how to enable a daemon. Simply make a symlink to the daemon's directory under <span class="code">/etc/sv</span> from a same-named filename in <span class="code">/run/runit/runsvdir/current</span>. For example, here's how to enable <span class="code">wpa_supplicant</span>:</p>
+
+<pre class="code">ln -s /etc/sv/wpa_supplicant \ 
+  /run/runit/runsvdir/current/wpa_supplicant</pre>
+
+<p>If the directory and run script under <span class="code">wpa_supplicant</span> are set up right, <span class="code">wpa_supplicant</span> simply starts running. If not, you can troubleshoot.</p>
+
+<h2>Runit Supervision Tools</h2>
+
+<p>All runit process supervision is performed with the <span class="code">sv</span> command. Its syntax follows:</p>
+
+<pre class="code">sv [-v] [-w sec] command services</pre>
+
+<p>Temporarily ignore <span class="code">-v</span> and <span class="code">-w</span>. I'll get back to those in a minute. The real basis of the sv command is:</p>
+
+<pre class="code">sv command services</pre>
+
+<p>In the preceding, <span class="code">services</span> is simply one or more directory names of directory symlinks in <span class="code">/run/runit/runsvdir/current</span>. If there are more than one, they're space delimited. There's no need to include the initial path, the name of the symlink is sufficent. Here's an example to check the status of <span class="code">sshd</span> and <span class="code">wpa_supplicant</span>:</p>
+
+<pre class="tinycode">
+[root@littlap ~]# <span class="userinput">sv status sshd wpa_supplicant</span>
+run: sshd: (pid 612) 3997s
+run: wpa_supplicant: (pid 618) 3997s; run: log: (pid 617) 3997s
+[root@littlap ~]#
+</pre>
+
+<p>The "command" can be one of the following:</p>
+<div class="collist">
+<ul>
+<li>up</li>
+<li>down</li>
+<li>status</li>
+<li>once</li>
+<li>pause</li>
+<li>cont</li>
+<li>hup</li>
+<li>alarm</li>
+</ul>
+</div>
+<div class="collist">
+<ul>
+<li>interrupt</li>
+<li>1</li>
+<li>2</li>
+<li>term</li>
+<li>kill</li>
+<li>exit</li>
+<li>start</li>
+<li>stop</li>
+</ul>
+</div>
+<div class="collist">
+<ul>
+<li>restart</li>
+<li>shutdown</li>
+<li>force-stop</li>
+<li>force-reload</li>
+<li>force-restart</li>
+<li>force-shutdown</li>
+<li>check</li>
+</ul>
+</div>
+
+<p>A lot of those commands are just for LSB compliance, which isn't all that relevant with runit. So, without worrying about LSB, the main commands an admin will be running are <span class="code">up</span>, <span class="code">down</span>, <span class="code">status</span>, <span class="code">hup</span>, and for troubleshooting and in cases of complex process dependencies, <span class="code">check</span>. The rest, if you need them, are explained on the <span class="code">sv</span> man page.</p>
+
+<p>As far as the <span class="code">-v</span> and <span class="code">-w</span> commands, these are used to insert a timeout during which to wait for the command to take effect.  <span class="code">-v</span> institutes a  7 second timeout, and <span class="code">-w</span> institutes a timeout equal in seconds to the number following it. Once again, consult the  <span class="code">sv</span> man page: It's pretty clear.</p>
+
+
+
+
+
+
+
+
+<h1 id="bpi">Change the screen BPI</h1>
+<p>This section applies to the subset of readers with bad vision. For that subset, one of the first priorities is to make things bigger so the screen can be read at all. Here's how to do it on Void Linux.</p>
+
+<p>As it comes from the manufacturer, Void has no <span class="code">.Xdefaults</span> or <span class="code">.Xresources</span> files for any user. So make the following <span class="code">.Xdefaults</span> file in your home directory:</p>
+
+<pre class="code">
+Xft.dpi: 120
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+</pre>
+
+<p>At a value of 120, the preceding <span class="code">Xft.dpi</span> gives quite a bit of magnification without "scrunching up" too many screens. However, those with really bad vision might want to jack that number higher, especially on little laptops.</p>
+
+<p>After making the <span class="code">.Xdefaults</span> file, the <span class="code">.Xresources</span> can be a simple symlink:</p>
+
+<pre class="code">ln -s .Xdefaults .Xresources</pre>
+
+<p>Last but not least, make sure that <span class="code">.Xdefaults</span> is put into effect by the <span class="code">xrdb</span> program, from within the <span class="code">.xinitrc</span> program. The following is an example <span class="code">.xinitrc</span> that starts the LXDE window manager system:</p>
+
+<pre class="code">
+#!/bin/sh
+xrdb -load /home/slitt/.Xdefaults
+exec /usr/bin/startlxde
+</pre>
+
+<p>This section's instructions are for the use case of booting to the command prompt and then using <span class="code">startx</span> to run the GUI interface. If you boot Void directly to the GUI, you,ll need  to do something similar but different. It will almost certainly involve <span class="code">.Xdefaults</span>, <span class="code">.Xresources</span>, and  the <span class="code">xrdb</span> program.</p>
+
+
+
+
+
+
+
+
+
+<h1 id="prepath">Add a normal user directory to the path</h1>
+<p>If yours is a desktop computer used primarily by you, you might want to install a directory for programs you write, owned by you. You can prepend that directory onto the front of the execution path. Here's how you do it:</p>
+
+<ol>
+<li><span class="code">cd ~</span></li>
+<li><span class="code">mkdir bin</span></li>
+<li><span class="code">echo 'export PATH=$HOME/bin:$PATH' &gt;&gt; .bashrc</span></li>
+<li>Log all the way out of the GUI.</li>
+<li>If the GUI was started by <span class="code">startx</span>, log out of the tty.</li>
+<li>Log back in again.</li>
+</ol>
+
+<p>Step 3 puts the following at the end of your <span class="code">.bashrc</span></p>
+
+<pre class="code">export PATH=$HOME/bin:$PATH</pre>
+
+<p>So every time .bashrc is run, it prepends <span class="code">$HOME/bin</span> to the front of the path, with $HOME being resolved at runtime to your home directory.</p>
+
+
+
+
+
+
+
+
+<h1 id="dmenu">Install a dmenu interface</h1>
+
+<p>Dmenu runs only in GUI mode, although it would be easy enough to make an nCurses version. Dmenu is the fastest, most productive program-running interface ever designed.  Anyway, for the 80% of the time when you know the filename of the program you're trying to run, it's lightning fast. For the other 20%, you can still use your normal menu or mouse interface. Dmenu is a vital productivity tool on any distro, and Void's no exception. Here's how you enable it, starting at a terminal in an X session, assuming your username is <span class="code">myuid</span>:</p>
+
+<ol>
+<li><span class="code">su -</span></li>
+<li><span class="code">xbps-install dmenu</span></li>
+<li><span class="code">exit</span></li>
+<li><span class="code">mkdir ~/bin</span></li>
+<li><span class="code">cd ~/bin</span></li>
+<li><span class="code">echo '#!/bin/sh' &gt; dmenu_mine</span></li>
+<li><span class="code">echo '/usr/bin/dmenu_run -l 24 -fn 10x20' &gt;&gt; dmenu_mine</span></li>
+<li><span class="code">chmod a+x dmenu_mine</span></li>
+<li><span class="code">~/bin/dmenu_mine</span></li>
+</ol>
+
+<p>If everything came out right, the preceding command gives you a menu of executable programs, and as you type the first few characters of the desired program, the list narrows. When you've typed enough to uniquely identify the desired program, the highlight falls on the desired program, so just press Enter to run it.</p>
+
+<p>At this point dmenu is installed as an easy to read vertical menu instead of the default teeny-tiny hard to understand horizontal menu. All that remains to unleash its productivity is to tell your window manager or desktop environment to run <span class="code">/home/myuid/bin/dmenu_mine</span> when a certain key combo is pressed. For instance, here's the code to enable Ctrl+Shift+Semicolon run it from LXDE:</p>
+
+<pre class="code">
+&lt;keybind key="C-S-semicolon"&gt;
+   &lt;action name="Execute"&gt;
+      &lt;command&gt;/home/myuid/bin/dmenu_mine&lt;/command&gt;
+   &lt;/action&gt;
+&lt;/keybind&gt;
+</pre>
+
+<p>Insert those five lines within the <span class="code">&lt;keyboard/&gt;</span> section of <span class="code">~/.config/openbox/lxde-rc.xml</span>. Log out of X and log back in, and your Dmenu menu appears every time you press Ctrl+Shift+Semicolon. Naturally, you can change the hotkey to suit your taste. Use the <span class="code">xev</span> program to discover the official names of various keys.</p>
+
+
+
+
+
+
+
+
+
+<h1 id="backup">Back up studiously.</h1>
+<p>Void Linux is a rolling release distro. This means that there's a greater chance of an upgrade busting your computer, and your computer has no exact version number. Therefore it's crucial to back up not only data, but the OS and the MBR or GPT, on a regular basis.</p>
+
+
+
+
+
+
+
+
+<h1 id="audio">Enable video, sound, Youtube</h1>
+<p>As it comes from the factory, Void Linux shows Youtube videos but doesn't play the sound. This is easily fixed. The first step is to make your normal user a member of groups  <span class="code">audio</span>  nad<span class="code">vidio</span>, by editing <span class="code">/etc/group</span> and putting the normal user at the end. If the preceding sentence isn't clear enough, perform the following command:</p>
+
+<pre class="code">man group</pre>
+
+<p>At the conclusion of all of this, exit all the way out of X, log out of the virtual terminal (tty1 or whatever), log in again, and run <span class="code">startx</span> again. These steps enable your addition of the groups.</p>
+
+<p>Next, install <span class="code">alsa-tools</span>, <span class="code">alsa-utils</span>, and <span class="code">sox</span>:</p>
+
+<pre class="code">
+xbps-install alsa-tools alsa-utils sox
+</pre>
+
+<p>Run alsamixer in a GUI terminal, and for every output device, make sure all volume controls are on 100% and not muted. Play a Youtube video, with the Youtube volume at full blast, and make sure there's sound. If not, use <span class="code">amixer</span> to investigate further. If you have installed PulseAudio (and I highly recommend against this), you have several more variables to consider. In my experience, PulseAudio is responsible for the most intractable audio failures, so I just don't use it (and therefore have to forgo Skype).</p>
+
+<p>If you uninstall PulseAudio, you'll need to go around to all the players and make sure their output doesn't go to PulseAudio.</p>
+
+<p>For all these reasons, I'm very pleased that Void Linux doesn't install PulseAudio by default.</p>
+
+<p>So let's say you've made the normal user a member of groups <span class="code">audio</span> and <span class="code">audio</span>, installed both <span class="code">alsa-tools</span> and <span class="code">alsa-utils</span>, verified that PulseAudio isn't installed (Void defaults to no PulseAudio), you've removed all mutes and turned up all playback volumes in <span class="code">alsamixer</span>, you've turned up the Youtube volume all the way in Firefox, and you still get no sound. That's when diagnostic testing begins:</p>
+
+<pre class="code">speaker-test -t sin -f 800</pre>
+
+<p>If it outputs a tone, you know most everything's already correct. You can now go on to see whether <span class="code">play</span>,  <span class="code">aplay</span>,  <span class="code">mplayer</span> and the like play known good .wav files, and if they don't, what error messages are thrown. Or maybe it's something with your browser's playing of Youtube itself: Consult your browser configuration.</p>
+
+<p>If the previous <span class="code">speaker-test</span> did not produce sound, try adding in the number of channels with the <span class="code">-c 2</span> option:</p>
+
+<pre class="code">speaker-test -t sin -f 800 -c2</pre>
+
+<p>If the preceding works, once again test known good .wav files and the like. But if it doesn't, deeper diagnostics are called for...</p>
+
+<p>One frequent cause of no sound, in spite of all outputs at 100%, no mutes, and no PulseAudio, is a missing or wrong configuration of the proper audio card. Typically, even if there's one physical card, a modern computer gives you two cards: One for analog audio, and one for HDMI. If you're trying to hit the wrong one, you'll obviously get no sound.</p>
+
+<p>Start with the <span class="code">aplay -l</span> command:</p>
+
+<pre class="tinycode">
+[slitt@littlap ~]$ <span class="userinput">aplay -l</span>
+**** List of PLAYBACK Hardware Devices ****
+card 0: HDMI [HDA ATI HDMI], device 3: HDMI 0 [HDMI 0]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: Generic [HD-Audio Generic], 
+     device 0: 92HD91BXX Analog [92HD91BXX Analog]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+[slitt@littlap ~]$
+</pre>
+
+<p>The preceding shows the cards by number, complete with each card's name (in square brackets) and device number. In the preceding, if I'm trying to enable analog sound, I need to be dealing with card 1 (and device 0). But that's not quite enough info: The PCM name is required. The <span class="code">aplay -L</span> command delivers that:</p>
+
+<pre class="tinycode">
+[slitt@littlap ~]$ aplay -L
+null
+    Discard all samples (playback) or generate zero samples (capture)
+hdmi:CARD=HDMI,DEV=0
+    HDA ATI HDMI, HDMI 0
+    HDMI Audio Output
+sysdefault:CARD=Generic
+    HD-Audio Generic, 92HD91BXX Analog
+    Default Audio Device
+front:CARD=Generic,DEV=0
+    HD-Audio Generic, 92HD91BXX Analog
+    Front speakers
+surround21:CARD=Generic,DEV=0
+    HD-Audio Generic, 92HD91BXX Analog
+    2.1 Surround output to Front and Subwoofer speakers
+surround40:CARD=Generic,DEV=0
+    HD-Audio Generic, 92HD91BXX Analog
+    4.0 Surround output to Front and Rear speakers
+surround41:CARD=Generic,DEV=0
+    HD-Audio Generic, 92HD91BXX Analog
+    4.1 Surround output to Front, Rear and Subwoofer speakers
+surround50:CARD=Generic,DEV=0
+    HD-Audio Generic, 92HD91BXX Analog
+    5.0 Surround output to Front, Center and Rear speakers
+surround51:CARD=Generic,DEV=0
+    HD-Audio Generic, 92HD91BXX Analog
+    5.1 Surround output to Front, Center, Rear and Subwoofer speakers
+surround71:CARD=Generic,DEV=0
+    HD-Audio Generic, 92HD91BXX Analog
+    7.1 Surround output to Front, Center, Side, Rear and Woofer speakers
+[slitt@littlap ~]$ 
+</pre>
+
+<p>The <span class="code">aplay -L</span> and <span class="code">aplay -l</span> commands have given you the card number and device number of the analog sound circuitry, as well as a list of the potential PCM streams supplied by both the analog and HDMI cards (and any other cards that may be there).</p>
+
+<p>On a laptop, the most likely PCM stream is the one called "front". To try that PCM, perform the following command, which adds the <span class="code">-D</span> option to specify the device:</p>
+
+<pre class="code">speaker-test -t sin -f 800 -Dfront:Generic -c2</pre>
+
+<p>In the preceding command, the device is specfied by a PCM name from <span class="code">-aplay -L</span>, followed by a colon, followed by what comes after the "CARD=" on the same line as the PCM name. In other words, "front:Generic".</p>
+
+<p>If the preceding works, that's good news: The sound system is functional. If the preceding doesn't work, try the other PCM name:CARD combos for PCMs with the same card name as the analog card. If one works, it gives you a good idea. From there, it's time to create a <span class="code">.asoundrc</span> file in the user's home directory, with the hope of making the default card/device be the one with your analog speakers. Mine looks like the following:</p>
+
+<pre class="code">
+pcm.!default {
+  type plug
+  slave {
+    pcm "hw:1,0"
+  }
+}
+ctl.!default {
+  type hw
+  card 1
+}
+</pre>
+<p/>
+<div class="note">
+<p class="title">Warning!</p>
+<p>The preceding <span class="code">~/.asoundrc</span> produces a sound system in which only one sound-producing program can operate the sound card at once, even if it's paused. That's OK, the preceding code was the simplest way to get sound working. Later in this document, the <a href="#mixaudio">Fix audio card monopolization</a> section explains how to have multiple sound-producing programs producing sound simultaneously.</p>
+</div>
+
+<p>After installing the preceding  <span class="code">.asoundrc</span>, one of the following commands should produce a tone, assuming you have a known good .wav file called <span class="code">knowngood.wav</span>:</p>
+
+<pre class="code">play knowngood.wav</pre>
+
+<pre class="code">aplay knowngood.wav</pre>
+
+<pre class="code">mplayer knowngood.wav</pre>
+
+<p>The <span class="code">play</span> program is an excellent choice for a number of reasons. First, it shows you a little text meter showing what it's playing, so you know whether you're playing something very soft. Second, it allows you to boost it beyond distortion. Doing so is bad for music listening, but can be helpful in troubleshooting if sounds are soft. To boost the volume, do something like this:</span></p>
+
+<pre class="code">play knowngood.wav gain 6</pre>
+
+<p>The preceding amplifies the electrical signal by 6db. Sure, it distorts to a degree, but if you're wondering whether the signal is simply too soft to hear, this helps settle that question. And if the <span class="code">play</span> program's meters mostly "peg" by displaying exclamation points, you can be pretty sure you're feeding in sufficient signal.</p>
+
+<p>If you still can't play .wav files after all of this, perhaps it's a driver problem, which is beyond the scope of this document and also occurs with all distros. Use the <span class="code">lshw</span> program, and compare its declared drivers with the output of <span class="code">lsmod</span>, and if you notice discrepancies, use <span class="code">modprobe</span> to load the proper drivers, or you might even need to install the drivers. The <span class="code">lshw</span> program tells you all about your sound cards.</p>
+
+
+
+
+
+
+
+
+
+
+<h1 id="mixaudio">Fix audio card monopolization</h1>
+<p>As Void ships from the factory, using the <span class="code">~/.asoundrc</span> developed in the preceding section, on some sound cards, the first sound program to play sounds monopolizes the sound card, so that other sound programs can't make sound. This wouldn't be so bad, except that programs keep on monopolizing the sound card <em>even if they're paused</em>. Often you need to close the program, and then reset the other program by replaying or rewinding or whatever. Worse yet, I know of no command to even find out which program is monopolizing the sound card.</p>
+
+<p>Many sound producing programs, including web browsers, are stateful, and depend on past states. This makes troubleshooting difficult, makes it hard to find root causes, and makes the whole discovery process very susceptible to superstition and raindances. Right off the bat, you need to find ways to decrease the statefulness.</p>
+
+<div class="danger">
+<p class="title">Danger:</p>
+<p>When troubleshooting audio card monopolization problems, be absolutely positive no programs capable of producing sound are open. No mplayer, no smplayer, no Clementine, no Rhythmbox, no mpd or mpc, no Internet radio, and above all, no web browsers, regardless of what they're currently viewing. If in doubt, reboot before troubleshooting.</p>
+
+<p>Rebooting consumes a couple minutes of your life, but can save you hours. When there are no programs capable of running sound open, it takes five to twenty minutes to fix the sound card monopolization problem on Void. If programs capable of making sound are open, the troubleshooting process could be a day of going over the same territory repeatedly and getting different results.</p>
+
+<p>Don't chance it. Make absolutely certain that the only open program capable of making sound is <span class="code">speaker-test</span>, until your troubleshooting is completely finished. </p>
+</div>
+
+<p>It turns out that the <span class="code">speaker-test</span> program is your friend. Every time you change your <span class="code">~/.asoundrc</span> file, you can kill all instances of speaker-test, rerun them again, and be guaranteed that they'll be running off the newly saved <span class="code">.asoundrc</span>. So diagnose and fix the audio card monopolization problem with speaker-test, not with any music player program or web based audio.</p>
+
+<h2>Recognizing the problem</h2>
+<p>Your first hint of this problem is that intermittently audio doesn't work, and it seems like it doesn't work if more than one audio sources are open, <em>whether or not</em> they're currently playing. If this seems to be happening, it's time to investigate. The first step is to close all programs that can operate the speakers. All of them. Every single one. If there's some question, reboot. It's better to take five minutes rebooting than go on an hour long wild goose chase (in my books and courseware, this wild goose chase is called "The Big Mistake" or "letting the root cause out of the box"). Once all sound producing programs are closed, perform the following command:</p>
+
+<pre class="code">speaker-test</pre>
+
+<p>What the <span class="code">speaker-test</span> command <em>should</em> do is send audible white noise (actually pink noise) to your speakers. If this command delivers an error message that includes the text "Device or resource busy", not only do you have the card monopolization problem, but you also haven't closed all your sound programs. Reboot and try again.</p>
+
+<p>If the <span class="code">speaker-test</span> errors out with text including "Playback open error: -2,No such file or directory", you probably have the wrong card specified in <span class="code">.asoundrc</span>. For instance, you might need to change <span class="code">pcm&#160;"hw:0,0"</span> to  <span class="code">pcm&#160;"hw:1,0"</span>. For details on how to discover card numbers and the like, see the <a href="#audio">Enable video, sound, Youtube</a> section earlier in this document. Once the <span class="code">speaker-test</span> command </p>
+
+<p>If it delivers no error messages but also doesn't play sound, turn your volume up all the way in hardware (if possible), turn it up all the way in software (<span class="code">alsamixer</span>), search for and undo any mutes, and try again.</p>
+
+<p>Once <span class="code">speaker-test</span> delivers pink noise to the speakers, you're ready to test for card monopolization. With the pink noise still playing, in another terminal run the following command:</p>
+
+<pre class="code">speaker-test -t sine -f 2000</pre>
+
+<p>The preceding command <em>should</em> sound a high pitched tone thorough your speakers, easily distinquished from the pink noise. If the preceding command issues an error message including the text "Device or resource busy", that indicates you have the card monopolization problem. Only when you can simultaneously hear both pink noise and the high pitched tone through your speakers is your card monopolization problem fixed.</p>
+
+<p>The exact tests, experiments and moves to fix this problem are discussed later in this section. But first, a word about what you're going to find when you search the net...</p>
+
+
+<h2>When you search the net</h2>
+<p>If you search the net trying to find how to play multiple sources on one card in ALSA, you'll be greeted by several doctorate thesis level treatises on Linux sound, and guys who say "Use Pulse or dmix or mpd." This is a little like asking how to hang drywall, and reading "Use drywall nails or drywall screws." Actually it's worse, because it's much easier to find info on drywall nails and screws than it is to find info on dmix and mpd.</p>
+
+<p>If you're using Void Linux, chances are you don't want the complexity of PulseAudio, just to make your sound work reasonably. So let's forget that. Mpd, which stands for "Music Player Daemon", is a music player operating as a daemon. It handles playlists and files and songs, etc, and you control it with a client (<span class="code">mpc</span>). Nice product, and it very well might solve the card monopolization problem (I haven't tried), but you might not want to introduce all that overhead just to make your card available to youtube videos, and probably not even both at the same time. That leaves dmix.</p>
+
+<p>You research dmix. What is it? Where do you get it? Which package is it in? What's the name of the dmix executable? How do you use dmix? And most of what the Internet tells you is "asound" snippets of various complexities, with no explanation. Well, this time you came to the right place...</p>
+
+<p>So here's the lowdown on dmix. Dmix is a feature of ALSA: If you've installed ALSA, you have dmix. It might be in the alsa-lib package, or it might be in the alsa-plugins package, or alsa-tools, or alsa-utils, but by the time you have alsa and aplayer and alsamixer up and running, you have dmix. There's no dmix executable: It's a part of ALSA. Once you have ALSA installed, you can enable dmix with certain entries into <span class="code">$HOME/.asoundrc</span>.</p>
+
+<h2>Fixing the monopolization</h2>
+
+<p>Here's a high level description of the monopolization remediation process:</p>
+
+<ol>
+<li>Make sure your sound works in the first place.</li>
+<li>Back up existing <span class="code">~/.asoundrc</span></li>
+<li>Modify  <span class="code">~/.asoundrc</span> to work with dmix</li>
+<li>Test</li>
+<li>If necessary, perform the raindance of installing then uninstalling PulseAudio</li>
+</ol>
+
+
+<h3>Make sure your sound works in the first place.</h3>
+<p>All this is a moot point if your audio doesn't work at all. Perform the following command</p>
+
+<pre class="code">speaker-test</pre>
+
+<p>If the preceding command doesn't make pink noise come out of the speakers, troubleshoot. If no joy, reboot and try again. Go back and go though the steps in the <a href="#audio">preceding section</a>. Work with it until you get pink noise.</p>
+
+
+<h3>Back up existing <span class="code">~/.asoundrc</span></h3>
+<p>You'll need it both to regroup if you make things worse, and you'll need it as a reference for your new <span class="code">~/.asoundrc</span>.</p>
+
+
+<h3>Modify  <span class="code">~/.asoundrc</span> to work with dmix</h3>
+
+<p>In the <a href="#audio">preceding section</a>, you created a <span class="code">~/.asoundrc</span> like the following, which should play pink noise just fine if no other audio programs are running:</p>
+
+
+<pre class="code">
+pcm.!default {
+  type plug
+  slave {
+    pcm "hw:1,0"
+  }
+}
+ctl.!default {
+  type hw
+  card 1
+}
+</pre>
+
+<p>Of course, your file might be slightly different due to different device numbers and card numbers and device names, etc. If your <span class="code">~/.asoundrc</span> looks like the preceding, then change it to look like the following:</p>
+
+<pre class="code">
+pcm.!default {
+	type plug
+	slave.pcm "dmixer"
+}
+
+pcm.dmixer  {
+ 	type dmix
+ 	ipc_key 1024
+ 	slave {
+		pcm "hw:1,0"
+		period_time 0
+		period_size 1024
+		buffer_size 4096
+		rate 44100
+	}
+	bindings {
+		0 0
+		1 1
+	}
+}
+
+ctl.dmixer {
+	type hw
+	card 1
+}
+</pre>
+
+<p>A few observations about the preceding:</p>
+<ul>
+<li>The new <span class="code">ctl.dmixer</span> has identical data to the old  <span class="code">ctl.!default</span></li>
+<li>The new <span class="code">pcm.dmixer</span> slave's <span class="code">pcm</span> entry is exactly like the old <span class="code">pcm.!default</span> slave's <span class="code">pcm</span> entry.</li>
+<li><span class="code">pcm.dmixer</span> <span class="code">bindings</span> values are verbatim and don't depend on the old <span class="code">~/.asoundrc</span>. Bindings relate audio channels to audio card channels, and the configuration in the preceding <span class="code">~/.asoundrc</span> should work for any 2 speaker stereo system. They're not necessary, so if you want to rule them out as a root cause, just remove the word <span class="code">bindings</span> and everything between the curly brace set that follows it. However, my understanding is that these bindings increase the performance of your audio, so be sure to replace the bindings once everything's working properly.</li>
+<li>All the other info in the preceding <span class="code">~/.asoundrc</span> are reasonable values and probably wouldn't cause a malfunction. You can tweak them when everything works, and you've become an ALSA expert.</li>
+</ul>
+
+<h3>Test</h3>
+<p>Make absolutely sure no programs are running that access audio in any way. If in doubt, reboot. Then run the following two commands, in the order shown:</p>
+
+<pre class="code">speaker-test</pre>
+<pre class="code">speaker-test -t sine -f 2000</pre>
+
+<p>The first command sends pink noise to your speakers, the second sends a 2000 hz tone. Most people can distinquish between the two and know that both are playing. If you hear both, you've fixed the problem.</p>
+
+<h3>If necessary, perform the raindance of installing then uninstalling PulseAudio</h3>
+
+<p>It's regrettable this step is even in this document, but I had personal experiences in which I had to install PulseAudio to get simultaneous playback from two sources. Later, when I uninstalled PulseAudio, I <em>still</em> got simultaneous playback. There are three possible reasons for this occurrance:</p>
+
+<ol>
+<li>The sound system is so stateful that, even though PulseAudio was never necessary, the restarting done while installing it caused the new <span class="code">~/.asoundrc</span> to finally be recognized.</li>
+<li>The PulseAudio package does something, perhaps make a directory or lay down a file, that enables ALSA to work even after PulseAudio has been uninstalled.</li>
+<li>I made a mistake.</li>
+</ol>
+
+<div class="note">
+<p class="title">Warning!</p>
+<p>Do <em>not</em> try to install <span class="code">libpulseaudio</span>! You almost certainly didn't install it manually: Programs dependent on it installed it for you. As compiled for Void Linux, lots of apps depend on <span class="code">libpulseaudio</span>, including <span class="code">chromium</span>,  <span class="code">qemu</span>,  <span class="code">mplayer</span>, and for some reason <span class="code">sox</span>. </p>
+</div>
+
+<p>Anyway, if the previous steps haven't enabled simultaneous <span class="code">speaker-test</span> playback, install the PulseAudio package and the Pavucontrol package, try again, reboot if necessary, and once you can get simultaneous playback, uninstall PulseAudio and Pavucontrol. Whatever you do, don't do a lot of PulseAudio configuration, and don't start the PulseAudio daemon. PulseAudio is a complex program that can really gum things up if you push it.</p>
+
+<h2>Wrapup</h2>
+
+<p>The content of this section of this document is almost certain to transition you from a system that plays sound, but only for one source at a time, to a system that can play several sources at once. If not, you're in for some research and troubleshooting.</p>
+
+
+
+
+
+
+
+<h1 id="xombrero">Get Xombrero Working Right</h1>
+<p>The Xombrero browser isn't a must. Firefox works much better on Void Linux than it does on other distros. Chromium works pretty well too. The simplistic and lightweight Xombrero is no substitute for Firefox.</p>
+
+<p>Nevertheless, the person appreciating Void's simplicity and robustness, and perhaps the quick keyboard-centrism of <span class="code">dmenu</span>, is likely to love Xombrero. The Xombrero expert does most browsing without ever needing to reach for a mouse. If this sounds attractive to you, read on...</p>
+
+<h2>Installation</h2>
+
+<p>Void's <span class="code">xombrero</span> package is outstanding. Install it like this:</p>
+
+<pre class="code">xpbs-install xombrero</pre>
+
+
+<h2>Documentation</h2>
+<p>The best sources of documentation for Xombrero are your Void installed <span class="code">/etc/skel/.xombrero.conf</span> file, the Xombrero man page, and the <a href="https://opensource.conformal.com/wiki/xombrero">Xombrero Wiki</a>.</p>
+
+
+<h2>Bookmarks</h2>
+<p>Xombrero bookmarks (favorites) are ridiculous. You can't bookmark a local file. You can't make categories of bookmarks. You can't create a bookmark hierarchy.</p>
+
+<p>So what you do in Xombrero is maintain an HTML file with a hierarchy of your bookmarks, and create a Xombrero quickmark to pull up that HTML file, by editing <span class="code">~/.xombrero/quickmarks</span>. My current <span class="code">~/.xombrero/quickmarks</span> follows:</p>
+
+<pre class="tinycode">
+o file:///s/websites/littlinks/index.html
+v file:///d/websites/tjunct/linux/void/voidtips.htm
+s file:///d/websites/tjunct/projects/stylz/
+</pre>
+
+<p>The key sequence to invoke a quickmark is <span class="code">go</span>, so to go to my list of links, it's the fast-typed <span class="code">goo</span>. Quickmarks are also good for temporary links, so <span class="code">gov</span> takes me to the hard disk version of this web page, and <span class="code">gos</span> takes me to my on-disk Stylz directory.</p>
+
+<div class="note">
+<p class="title">About Aliases:</p>
+<p>The documentation says you can do the same thing, with Aliases, that you can with Quickmarks, and implies it takes less keystrokes to Alias to a URL than to Quickmark to it. I have been unable to make aliases work, after trying what was stated in the documentation and many permutations thereof.</p>
+</div>
+
+<h3>Isn't this too much work?</h3>
+<p>I just suggested that you create and maintain your own bookmark page, complete with links. Isn't that <em>way</em> too much work just to use a particular browser?</p>
+
+<p>Yes it is. If the only benefit of doing so were to use Xombrero, I wouldn't use Xombrero. But the fact is, I was maintaining my own HTML coded bookmark list long before hearing of Xombrero. My extensive hierarchy of bookmarks is much too valuable to trust to a browser. Before maintaining my own, I often lost my bookmarks in an upgrade after I blew away my old home directory, or when my browser changed its bookmark API, or when, to save disk space in my directory, I blew off one of those silly xul files, temporarily when I ran too many instances of the browser. And there's the Big Kahuna of reasons for a personal bookmark hierarchy unaffiliated with a browser: I get the exact same bookmark hierarchy on all my browsers, and even on other browsers on the same LAN as my desktop computer.</p>
+
+<p>I maintain my bookmarks with a program that parses a special tab-indented outline (maintained with VimOutliner) into a link hierarchy in which the leaf nodes are links pointing to offpage pages, and the branch nodes are on-page links. This means you can find a link either by descending the hierarchy, or by searching. Your mileage may vary: You might maintain your link hierarchy manually. It would be pretty easy using Bluefish.</p>
+
+<h2>Configuring Xombrero</h2>
+<p>As it ships from the factory, the Void Linux Xombrero package gives you the <span class="code">~/.xombrero</span> tree, and does not give you the <span class="code">~/.xombrero.conf</span> file. The first thing you should do is guarantee the existence of <span class="code">~/.xombrero.conf</span> with the following command:</p>
+
+<pre class="code">touch ~/.xombrero.conf</pre>
+
+<p>The existence of <span class="code">~/.xombrero/</span> and <span class="code"></span> gives you the means to configure Xombrero as you want.</p>
+
+<p>Of course, some people will shout at you never to change these files directly, only to use Xombrero's  user interface to change its configuration. OK fine, for sure for sure. Try not to laugh as you remember you came to Void so you could use Vim or Emacs or nano or whatever as your configuration tool. Try not to laugh as you contemplate there are already too many NetworkManagers, KDEs and systemds in this world, with no user-servicable parts inside, you must use <em>their</em> interface.</p>
+
+<p>Because there's a possibility (although I've never run across an actual occurrence) that Xombrero could overwrite your modification of a file, make sure to do the modifications when no Xombrero instances are running. Or you can do what I do: Modify the files when Xombrero <em>is</em> running, and half the time the already-running Xombrero recognizes my changes instantly.</p>
+
+<div class="note">
+<p class="title">Important:</p>
+
+<p>To learn all about what you can put in your <span class="code">~/.xombrero.conf</span>, read but do not modify <span class="code">/etc/skel/.xombrero.conf</span>.</p>
+</div>
+
+<p>This section has discussed Xombrero config in the abstract. Now for some specifics.</p>
+
+
+<h2>Change your home page</h2>
+
+<p>Straight from the factory, Xombrero's home page is Void's home page. If you want it to be something else (your bookmark list, for instance, you change it by adding the following line to <span class="code">~/.xombrero.conf</span>:</p>
+
+<pre class="code">home file:///s/websites/littlinks/index.html</pre>
+
+<p>Of course, in your specific case you'd change the file URL to point to <em>your</em> bookmark hierarchy. Save the file, and every time you open a new Xombrero instance, it starts at your bookmark hierarchy. </p>
+
+<h2>A few handy default hotkeys</h2>
+
+<table id="keystrokes">
+<thead>
+<tr>
+	<td>Key</td>
+	<td>Functionality</td>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+	<td>F5</td>
+	<td>Reload web page</td>
+</tr>
+
+<tr>
+	<td>F6</td>
+	<td>Focus on URL input field</td>
+</tr>
+
+
+<tr>
+	<td>F7</td>
+	<td>Focus on the web search input field</td>
+</tr>
+
+<tr>
+	<td>Backspace</td>
+	<td>Previous page</td>
+</tr>
+
+<tr>
+	<td>Shift+<br/>Backspace</td>
+	<td>Forward to next page</td>
+</tr>
+
+
+<tr>
+	<td>f</td>
+	<td>Number all links visible on window.
+   <br/>Then enter a number to go to that link.
+   <br/>Press the enter key to complete the process.</td>
+</tr>
+
+
+<tr>
+	<td>/</td>
+	<td>search</td>
+</tr>
+
+<tr>
+	<td>?</td>
+	<td>search backward</td>
+</tr>
+
+<tr>
+	<td>n</td>
+	<td>search again, forward</td>
+</tr>
+
+<tr>
+	<td>N</td>
+	<td>search again, backward</td>
+</tr>
+
+<tr>
+	<td>gox</td>
+	<td>Load URI for Quickmark x</td>
+</tr>
+
+<tr>
+	<td>gg</td>
+	<td>Go to top</td>
+</tr>
+
+<tr>
+	<td>gG</td>
+	<td>Go to bottom</td>
+</tr>
+
+<tr>
+	<td>Space</td>
+	<td>Go down one page</td>
+</tr>
+
+<tr>
+	<td>Ctrl+d</td>
+	<td>Down half page</td>
+</tr>
+
+<tr>
+	<td>PgUp</td>
+	<td>Up one page</td>
+</tr>
+
+<tr>
+	<td>Ctrl+u</td>
+	<td>Up half page</td>
+</tr>
+<tr>
+	<td>j</td>
+	<td>Down one line</td>
+</tr>
+
+<tr>
+	<td>k</td>
+	<td>Up one line</td>
+</tr>
+
+<tr>
+	<td>l</td>
+	<td>Scroll right</td>
+</tr>
+
+<tr>
+	<td>h</td>
+	<td>Scroll left</td>
+</tr>
+
+
+
+
+</tbody>
+</table>
+
+<h2>Summary</h2>
+<p>Xombrero is a simple browser that can be driven almost entirely via keyboard, by a person who knows Xombrero's hotkeys. Xombrero is configurable, via editor, in the <span class="code">~/.xombraro.conf</span> file and the <span class="code">~/.xombrero/</span> directory tree. The best sources of documentation for Xombrero are your Void installed <span class="code">/etc/skel/.xombrero.conf</span> file, the Xombrero man page, and the <a href="https://opensource.conformal.com/wiki/xombrero">Xombrero Wiki</a>.</p>
+
+
+
+
+
+
+<h1 id="defbrowse">Set Your Default Browser</h1>
+<p>We all have our own ideas about what browser should come up when we click a link in a non-browser application. The following two commands set your default browser to xombrero.</p>
+
+<pre class="tinycode">
+xdg-mime default xombrero.desktop x-scheme-handler/http
+xdg-mime default xombrero.desktop x-scheme-handler/https
+</pre>
+
+<p>In the preceding, if the commands gripe about not being able to write a file because of non-existent directories, just create the directories.</p>
+
+<p>In the preceding, if you wanted to change your default browser to firefox, all that would change is you'd use <span class="code">firefox.desktop</span> instead of <span class="code">xombrero.desktop</span>.</p>
+
+
+
+
+
+
+
+<h1 id="clementine">Fix Gstreamer Problem in Clementine</h1>
+<p>After installing Clementine, if playing an Internet radio station errors out with a Gstreamer complaint about
+the proper sound plugins not being installed. The way I solved it was to install the following group
+of packages:</p>
+
+<ul>
+<li>cmus</li>
+<li>cmus-faad</li>
+<li>cmus-ffmpeg</li>
+<li>cmus-flac</li>
+<li>cmus-libao</li>
+<li>cmus-modplug</li>
+<li>cmus-mpc</li>
+<li>cmus-opus</li>
+<li>cmus-wavpack</li>
+</ul>
+
+<pre class="code">xbps-install cmus cmus-faad cmus-ffmpeg \
+ cmus-flac cmus-libao cmus-modplug \
+cmus-mpc cmus-opus cmus-wavpack</pre>
+
+
+
+
+
+
+
+
+<h1 id="xkeyboard">Fix Keyboard Doesn't Work in X</h1>
+<p>It happened to me, who knows, it might happen to you.</p>
+
+<p>Intermittently (but often) I'd boot to CLI, run <span class="code">startx</span>, and once in X, the keyboard would not be recognized. Keystrokes would not be acknowledged. The Caps Lock light wouldn't light on pressing Caps Lock. The keyboard was dead in X.</p>
+
+<p>It's intermittent, so I can't say for sure it's been fixed, but here's what I think happened. X wasn't acting right with PS/2 keyboards. I couldn't get it to happen with a USB keyboard unless a PS/2 keyboard was already plugged in. If my suspicions are correct, if all the PS/2 jacks on the computer are unpopulated and USB keyboards and mice are used, this symptom will never happen. If there <em>is</em> a PS/2 keyboard plugged in and the USB keyboard exhibits the symptom, unplugging and replugging the USB keyboard makes the USB keyboard operational. Unplugging and replugging the PS/2 keyboard doesn't make the PS/2 keyboard operational. If the PS/2 keyboard doesn't work in X, and there's a need for a keyboard long enough to exit X and perhaps reboot, any old USB keyboard can be plugged in temporarily to achieve the exit and perhaps reboot.</p>
+
+<p>In most cases, my best solution advice for this symptom would be to unplug all PS/2 devices and replace them with USB devices. However, in my case, all my keyboards with decent action are Compaq PS/2 keyboards. These are keyboards that would require at least $50 each to replace, and with so few retail stores in Orlando, they'd need to be bought mail order. 
+How would I test the touch on a mail order keyboard before buying? I wouldn't be able to. There was a real need for me to keep using PS/2 keyboards. So I plugged the keyboard into the keyboard PS/2 jack of those USB to PS/2 Y connectors, 
+and plugged the Y's USB into my computer. Now the PS/2 keyboard rarely displays the symptom, and when it does, I can unplug and replug the USB part of the Y, thereby restoring keyboard functionality in X.</p>
+
+<p>Not all adapters work. I have a single (not Y) USB to PS/2 adapter that <em>always</em> fails in X. Without an excellent reason to keep using PS/2 keyboards.</p>
+
+<p>Here are some tips I've found tend to reduce the frequency of the "Keyboard loses function in X" symptoms:</p>
+
+<ul>
+<li>Never reboot or halt from X. Always exit X and close out all programs before rebooting or halting.</li>
+<li>Immediately after running <span class="code">startx</span>, make your very first keyboard activity Ctrl+Alt+F2. Then Ctrl+Alt+F7 to go back to X, and use your keyboard as normal.</li>
+</ul>
+
+<p>The symptom described in this section is intermittent. I don't yet have enough data to even begin to assign a root cause to it, or a method of preventing it. This section simply gives some workarounds and raindances that appear to lessen its frequency.</p>
+
+
+
+
+
+
+
+
+<h1 id="bluefish">Compile Bluefish for zencoding.</h1>
+<p>For those of us regularly authoring HTML documents, <a target="_blank" href="https://en.wikipedia.org/wiki/Emmet_%28software%29">zencoding</a> is essential to productivity. The <a href="https://en.wikipedia.org/wiki/Bluefish_%28software%29">Bluefish</a> editor is famous for its great implementation of zencoding. In mid-September, 2015, the Bluefish installed by the xbps package manager didn't have Zencoding, because it wasn't compiled with Python enabled. A week later, Bluefish installed by xbps had Zencoding and Python enabled. This section is included just in case the default Bluefish ever reverts to no Zencoding.</p>
+
+<p>There are ways to work with xbps so that your Bluefish compiles with zencoding built in, but nobody has been able to explain these, to me, in a manner that someone unfamiliar with xbps can follow. Therefore, I just compile my own, outside the package manager. But even that's a challenge.</p>
+
+<p>Installing Python is no guarantee that Bluefish will compile with python enabled. Nor is using the <span class="code">--enable-python</span> option for Bluefish' <span class="code">./configure</span> command.</p>
+
+<p>After compiling, from the Bluefish menu choose Help-&gt;Build&#160;Info, bringing up a dialog box with how the executable was built. If it says "Python: No", you haven't achieved Zencoding and must try something different. I can't identify that something.</p>
+
+<p>To make things easier, the following is the dialog box created by Help-&gt;Build&#160;Info dialog box for Bluefish created by <span class="code">xbps-install</span> in late September, 2015. Theoretically, if you can get your compiled version to look like this, you'll have Zencoding.</p>
+
+<img src="images/bluefish_build.png" width="80%" alt="Bluefish build dialog box, xbps installed, Python enabled" />
+
+
+
+
+
+
+
+
+
+<h1 id="dovecot">Enable Dovecot</h1>
+<p>Void makes Dovecot easier because it installs all the right stuff, latest version, and it creates your Runit directory and run script for you. Nevertheless, Dovecot is a heavy duty program that requires some thought to set up. The instructions in this section are for a simple Dovecot without plugins. Plugins can come later, and are beyond the scope of this document.</p>
+
+<p>Before you install Dovecot, it's easier if your machine already has a fixed IP address. Once it does, install it with xbps as usual:</p>
+
+<pre class="code">xbps-install dovecot</pre>
+
+<p>The preceding command installs the executables, the numerous config files, and the Runit directory with run script. It might run (insecurely) as installed: Try hitting it with an IMAP aware email client.</p>
+
+<p>Once you have a permanent static IP address for the computer, you need to recreate Dovecot self-signed certificates. Here are the three commands you run in order to do so:</p>
+
+<ol>
+<li><span class="code">rm -f /etc/ssl/{certs,private}/dovecot.pem</span></li>
+<li>edit /etc/ssl/dovecot-openssl.cnf</li>
+<li><span class="code">/usr/bin/dovecot-mkcert.sh</span></li>
+</ol>
+
+<p>Editing <span class="code">/etc/ssl/dovecot-openssl.cnf</span> consists of Filling in your country, state, city, organization (I used Troubleshooters.Com), organizational unit name (I used IT), and last but not least, make sure that you put the computer's permanent static IP address, or a URL resolving to that IP, right after the <span class="code">CN=</span>.</p>
+
+<p>A complete treatise on how to configure Dovecot is well beyond the scope of this doc, but pay particular attention to the output of <span class="code">dovecot&#160;-n</span>. This command lists all config items that are different from the compiled in default. If you have another Dovecot server that does what you want it to, compare its <span class="code">dovecot&#160;-n</span> to the one on your Void machine, and edit <span class="code">/etc/dovecot/dovecot.conf</span> and the files under <span class="code">/etc/dovecot/conf.d/</span> in order to get them identical.</p>
+
+<p>I suggest that you enable only imap, and only SSL enabled IMAP. Unless you have a big reason to do otherwise, I suggest that your <span class="code">passdb</span> driver be <span class="code">pam</span> and your <span class="code">userdb</span> driver be <span class="code">passwd</span>. That way you can log in with the same password you use to log into the machine.</p>
+
+<p>The following are some pertinent output from my <span class="code">dovecot&#160;-n</span>:</p>
+
+<pre class="code">
+passdb {
+  driver = pam
+}
+protocols = imap
+service imap-login {
+  inet_listener imap {
+    port = 0
+  }
+  inet_listener imaps {
+    port = 993
+    ssl = yes
+  }
+}
+ssl = required
+userdb {
+  driver = passwd
+}
+</pre>
+
+<p>When testing your new Dovecot, hit it from an IMAP aware email client. <em>Do not</em> put the password in the client: Safer to type it in at each session. Make sure to tell your client to access incoming mail with SSL exclusively, and test to make sure that there's no way you can access your incoming mail without typing your password.</p>
+
+
+
+
+
+
+
+<h1 id="udftools">Install Udftools</h1>
+<p>Void Linux has no udftools package, meaning you have no <span class="code">mkudffs</span> command, making it extremely difficult to burn Blu-ray backups. It even disallows one simple way to burn DVDs with files bigger than 2GB. Luckily, you can hand compile udftools.</p>
+
+<p>But it's not easy. As is typical of so much software, udftools is erroneously documented throughout the Internet, and almost a decade behind in the project's maintenance, requiring a patch. These instructions hopefully give you one-stop-shopping for instructions to install udftools on Void. The following instructions were tech edited and worked perfectly on an up-to-date 64 bit Void box on 12/15/2015:</p>
+
+<ol>
+<li>Make sure that <span class="code">readline-devel</span> <span class="code">ncurses-devel</span> are installed.</li>
+<li>Pick a directory to host the build. I chose <span class="code">$HOME/junk</span>, which serves as the example for this set of instructions.</li>
+<li><span class="code">cd $HOME/junk</span></li>
+<li><span class="code">mkdir udftools</span></li>
+<li><span class="code">cd udftools</span></li>
+<li>Download the tarball at <span class="code">http://sourceforge.net/projects/linux-udf/?source=directory</span>. The tarball, as downloaded, should be called <span class="code">udftools-1.0.0b3.tar.gz</span>.</li>
+<li>Copy the tarball to <span class="code">$HOME/junk/udftools</span></li>
+<li><span class="code">tar xzvf udftools-1.0.0b3.tar.gz</span></li>
+<li><span class="code">less udftools-1.0.0b3/AUTHORS</span></li>
+<li>If the AUTHORS file looks a lot different from the following, you got the wrong tarball:
+<pre class="code">
+libudffs
+ Ben Fennema &lt;bfennema@falcon.csc.calpoly.edu&gt;
+
+mkudffs
+ Ben Fennema &lt;bfennema@falcon.csc.calpoly.edu&gt;
+
+cdrwtool
+ Jens Axboe &lt;axboe@suse.de&gt;
+ Ben Fennema &lt;bfennema@falcon.csc.calpoly.edu&gt;
+
+pktsetup
+ Jens Axboe &lt;axboe@suse.de&gt;
+
+doc
+ Paul Thompson &lt;set@pobox.com&gt;
+ Ben Fennema &lt;bfennema@falcon.csc.calpoly.edu&gt;
+
+</pre></li>
+<li><span class="code">wget 	http://www.linuxfromscratch.org/<br/>
+patches/downloads/udftools/<br/>
+udftools-1.0.0b3-fixes-1.patch</span><ul>
+<li>The preceding command should be one line. I had to wrap it for the website.</li>
+<li>If the wget command ceases to work, search for it.</li>
+<li>If all else fails, download <a href="udftools-1.0.0b3-fixes-1.patch">this unofficial version</a>.</li>
+
+</ul></li>
+<li><span class="code">patch -p0 &lt; udftools-1.0.0b3-fixes-1.patch</span></li>
+<li><span class="code">cd udftools-1.0.0b3</span></li>
+<li><span class="code">./configure</span></li>
+<li><span class="code">make</span></li>
+<li><span class="code">su -c "make install"</span></li>
+</ol>
+
+<p>On my up-to-date 64 bit Void machine on 12/15/2015, the preceding procedure successfully installed the udftools package. If, for some reason you don't like the results, my research shows me that the following files were installed by the <span class="code">su -c "make install"</span> command:</p>
+
+<ul>
+<li>/usr/local/bin/cdrwtool</li>
+<li>/usr/local/bin/mkudffs</li>
+<li>/usr/local/bin/pktsetup</li>
+<li>/usr/local/bin/udffsck</li>
+<li>/usr/local/bin/wrudf</li>
+<li>/usr/local/lib/libudffs.a</li>
+<li>/usr/local/lib/libudffs.la</li>
+<li>/usr/local/man/man1/cdrwtool.1</li>
+<li>/usr/local/man/man8/mkudffs.8</li>
+<li>/usr/local/man/man8/pktsetup.8</li>
+</ul>
+
+<p>After I learn more about Void Linux packaging, I hope to create and maintain a Void package for udftools. But until then, at least you have this procedure to work with.</p>
+
+
+
+
+
+
+
+<h1 id="perldatetime">Installing Perl DateTime.pm on Void</h1>
+<p>So you move a program over to Void, run it, and your program fails, telling you it can't find <span class="code">DateTime.pm</span> on Perl's module path. No problem, you use <span class="code">xlocate</span> and <span class="code">xpbs-query</span> to find Void's Perl DateTime package, and are surprised that it doesn't exist. OK, so you'll use CPAN. But the <span class="code">cpan</span> program fails to install DateTime, and besides, CPAN's dangerous: I once broke Vim trying to use CPAN to install something.</p>
+
+<p>The right way to fix this problem is to create your own Perl DateTime package, and presumably give it to the Void project, using <a target="_blank" href="https://github.com/voidlinux/void-packages/blob/master/Manual.md#build-style-scripts">this document</a>. If you're anything like me, your todo list allotted 10 minutes to transfer this program, not the week it would take to become a proficient Void packager using this document. If you're anything like me, you made a mental note to learn Void Packaging over the next few months, and searched for another solution, hoping it wouldn't require a VM or a container.</p>
+
+<p>Here's what I did...</p>
+
+<div class="danger">
+<p class="title">Danger!</p>
+<p>The way I did it is, to say the least, "unofficial", and it's possible it could lead to undetected date and time errors in programs that use it. Don't use my solution where being a day of an hour off could lead to a catastrophe.</p>
+</div>
+
+<p>The preceding said, I feel just fine about the way I did it. What I did was to run Lubuntu 14.04 LTS running in a VM, with a mount so I could run my program from the Lubuntu VM, and installed the necessary perl modules, which mainly turned out to be <span class="code">libdatetime-perl</span>. Then I started copying. From Lubuntu's <span class="code">/usr/lib/perl5</span> I copied <span class="code">DateTime.pm</span>, <span class="code">DateTimePP.pm</span>, and <span class="code">DateTimePPExtra.pm</span> into Void's <span class="code">/usr/lib/perl5/site_perl</span> directory. Then, on Void, I created directory <span class="code">/usr/lib/perl5/site_perl/DateTime</span>, and selectively copied files from Lubuntu's <span class="code">/usr/lib/perl5/DateTime</span> directory into Void's <span class="code">/usr/lib/perl5/site_perl/DateTime</span> until my app worked.</p>
+
+<p>If I had it to do over again, I'd have tarballed everything in Lubutu's <span class="code">/usr/lib/perl5/DateTime</span> and extracted it into Void's <span class="code">/usr/lib/perl5/site_perl/DateTime</span> directory. After all, there was no <span class="code">/usr/lib/perl5/site_perl/DateTime</span> to begin with, so I wouldn't have overwritten anything.</p>
+
+<p>So that's it. If you have the time to learn Void packaging, do it the right way. But if you haven't the time, I found a way that works for me.</p>
+
+
+
+
+
+
+
+
+
+<h1 id="contribute">Contribute to Void</h1>
+<p>One reason Void Linux is so clean and common-sense is that it's not corporate. Their one and only priority is making a clean, user accessible OS. With a very small team, Void continues to maintain over 6000 packages. The people running Void aren't trust fund babies: They're real people who need money to live. If you believe Void is the best OS, and Void helps you in your life and your business, ensure Void's continuing existence by paying them.  It doesn't have to be much, but if you use Void Linux every day, pay them something. You're helping ensure that Void will neither go out of business nor be bought out by a corporation more interested in capturing market than making a clean OS.</p>
+
+<p>To contribute to Void Linux, go to <a href="http://www.voidlinux.eu/donations/"> http://www.voidlinux.eu/donations/</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="summary">Summary</h1>
+<p>Void Linux is small, simple, modular, and easily understood. By default it installs very little, is lightweight, and works very well on anemic computers, as well as well endowed computers. But Void is scantly and contradictorally documented throughout the Internet.</p>
+
+<p>No problem. This document gives you the tools to get an MBR loaded, one partition, ext4 Void system fully functional.  Other configurations aren't all that much more difficult. Other people should write their own, completely tech-edited documentation, and keep it up to date. This way Void Linux can assume its true role as the leading KISS, modular Linux.</p>
+
+
+<!--
+-->
+
+
+
+
+
+<hr/>
+<p>[ <a href="../../utp/tcourses.htm">Training</a> | <a href="../../troubleshooters.htm">Troubleshooters.Com</a>
+| <a href="../../email_steve_litt.htm">Email
+Steve Litt</a> ]</p>
+
+
+
+<br class="bottompage"/>
+</div>
+</div>
+</body></html>

@@ -8,6 +8,15 @@ git status - shows what is changed, what is staged
 git rebase <base branch name> - rebase current branch to <base-branch> and put local commits on top
 git rebase --onto one_branch two_branch three_branch - replay commits done to three since forking two on top of one
 git push [what] where 
+git push origin local_branch:remote_branch
+
+git log -n1 --pretty=format:"%H at %cD"
+git log branch1..branch2 - shows commits present in 2 but absent in 1
+
+git branch -d local_branch_name - delete local branch
+git branch -D local_branch_name - force delete local branch
+git push origin --delete remote_branch_name - delete remote branch
+git fetch --all --prune - remove local tracking branches when remote branch is deleted
 
 Add local repo to new remote repo
 1. On remote host create bare repo:
@@ -17,6 +26,14 @@ Add local repo to new remote repo
 3. Make initial push into remote
 ~# git push -u origin master
 
+push to remote without further connection
+on remote
+#git init --bare name.git
+on local
+~git remote add tmp /path/to/remote
+~git push --all tmp
+~git remote remove tmp
+
 git checkout <branch-name> -- ./path/to/file - update file from other branch
 git clone to specific dir
     git clone /path/to/repo dirname
@@ -25,6 +42,8 @@ git reflog - keeps track of HEAD position
 so after git reset --hard <old commit> still can get back via git reset HEAD@{x}, where HEAD@{x} is ref record of head position you want to jump back
 also check reflog of particular branch:
 git reflog show <branch-name>
+
+git ls-remote --get-url - show url to remote repository
 
 git push local branch to remote:
 git checkout -b local_branch
@@ -38,3 +57,18 @@ git checkout --track -b local_name origin/branch_name - to the different name
 
 compare files in different branches
 git diff branch1 branch2 -- path/to/file
+
+git add -N filename (register file in git database without actual adding. Useful with "git add -p filename" for files, that are not there yet)
+git add -p filename (add selected parts of the file to commit: -p == --patch)
+git diff --staged (check if you added correct parts)
+git reset -p (to unstage incorrect parts)
+
+git stash - save unfinished work
+git stash apply - restore unfinished work
+git stash apply --index (preserve staged changes)
+git stash drop - delete stash
+git stash list - get list of stashes
+git stash pop - apply+drop together
+
+git symbolic-ref --short -q HEAD - get branch name in script
+git checkout <SHA1> - jump to particular revision (both forward and back). This puts you in detached HEAD state (similar to separate branch). Use git checkout <branch-name> to attach HEAD back.
