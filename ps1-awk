@@ -1,0 +1,10 @@
+#!/usr/bin/awk -f
+
+BEGIN { FS = OFS = "/" }
+{
+    sub (ENVIRON["HOME"], "~");
+    if (length ($0) > 16)
+        print $1,$2"/...",$NF
+    else
+        print $0
+}

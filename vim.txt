@@ -95,3 +95,9 @@ Ctrl-R - redo (undo undo)
 unimpared.vim
 [<space> add empty line before line with cursor
 ]<space> add empty line after
+
+/home/artex2000/.vim/colors
+/home/artex2000/.vim/bundle
+/home/artex2000/.vim/bundle/vim-pathogen
+/home/artex2000/.vim/bundle/vim-dirdiff
+/home/artex2000/.vim/bundle/ctrlp.vim
