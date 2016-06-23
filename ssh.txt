@@ -55,3 +55,17 @@ Ready to go:
 ssh -1 user@server - using protocol 1 (rsa)
 ssh -2 user@server - using protocol 2 (whatever)
 
+Dynamic forwarding:
+ssh -D <local_port> user@remote_host
+same via config file:
+Host alias
+HostName server_name
+User user
+DynamicForward <local_port>
+
+Local port forwarding:
+ssh user@remote_host -L 8080:localhost:8080 will forward traffic from local machine port 8080 to remote_host:8080
+via config file
+LocalForward localhost:8080 localhost:8080
+
+

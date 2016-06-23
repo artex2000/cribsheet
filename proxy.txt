@@ -1,0 +1,22 @@
+Local machine.
+1. Configure browser to use SOCKS5 proxy:
+a)Firefox:
+    SOCKS Proxy 127.0.0.1 Port 8080
+    check box "SOCKS v5"
+    on "about:config" page add
+    network.proxy.socks_remote_dns      user set        boolean     true
+    
+b)Chrome
+    run google-chrome with the following options:
+    --proxy-server="socks5://localhost:8080"
+    --host-resolver-rules="MAP * 0.0.0.0 , EXCLUDE localhost"
+    
+2. Configure dynamic forwarding via ssh:
+    ssh -C2qTnN -D 8080 user@remote_host
+Note: default ssh port (22) may be locked by company firewall. Use different port number (like 443) via
+    ssh -C2qTnN -D 8080 user@remote_host -p443
+    
+Remote site
+1. On the router configure port forwarding to correct MAC address
+2. On remote server configure sshd daemon to listen to correct port:
+    file /etc/ssh/sshd_config line Port <port_num>

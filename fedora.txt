@@ -23,3 +23,52 @@ How to make custom kernel for Fedora distro:
     #grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 11. Restart system
     #reboot
+    
+--------------
+Fedora GRUB2 boot in single mode
+At grub splash press a key to interrupt booting
+Select boot entry, press "e" to edit.
+With arrow keys find boot command:
+    linux /boot/vmlinuz...... ro quiet splash
+Add command parameter "single"
+    linux /boot/vmlinuz...... ro quiet splash single
+Press Ctrl-X to proceed
+    
+--------------
+Fedora lvm2 shrink
+1. Find appropriate file system (usually home) to shrink
+    df -h (note the corresponding device, i.e. /dev/mapper/fedora-home)
+    
+2. Shrink filesystem
+    e2fsck -fy /dev/.../fedora-home (dev name from previous step)
+    resize2fs /dev/.../fedora-home 20G (new size will be 20G)
+    
+3. Display logical volumes
+    lvdisplay (find yours, similar to /dev/fedora/home)
+    
+4. Shrink logical volume
+    lvreduce -L <new_size> /dev/fedora/home
+    
+5. Resize filesystem to fill all new size
+    resize2fs /dev/.../fedora-home
+    
+6. Check physical layout
+    pvs -o+pv_used, for the available extents.
+    
+7. If found, free one of physical partitions
+    pvmove /dev/sda3    - it will be distributed between other physical devices
+    
+8. Check if intended physical partition is free
+    pvs -o+pv_used
+    
+9. Remove it from volume group
+    vgreduce <volume_group_name> /dev/sda3
+----------
+Add physical disk to volume group
+Note - partition should be already of LVM type (8e) (use fdisk or gparted)
+    pvcreate /dev/sda1
+    vgextend <volume_group_name> /dev/sda1
+    vgdisplay (find available space)
+    lvextend -l +<size in PE units> /dev/logical/volume/name
+    resize2fs /dev/logical/volume/name
+    
