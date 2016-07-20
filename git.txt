@@ -34,6 +34,9 @@ on local
 ~git push --all tmp
 ~git remote remove tmp
 
+set new remote url
+~git remote set-url origin https://new/url
+
 git checkout <branch-name> -- ./path/to/file - update file from other branch
 git clone to specific dir
     git clone /path/to/repo dirname
