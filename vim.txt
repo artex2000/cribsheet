@@ -90,6 +90,16 @@ u - undo last edit
 U - undo all changes to edited line
 Ctrl-R - redo (undo undo)
 
+--------edit binary files
+after file open
+:set binary
+:%!xxd
+    do some editing
+:%!xxd -r (convert back from hex view)
+:w
+
+---------convert line endings in bulk
+:argdo set ff=(unix,dos) | w
 
 --------plugins
 unimpared.vim

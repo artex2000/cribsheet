@@ -1,0 +1,929 @@
+"Source of the https://mollyrocket.com/casey/" page
+
+<!DOCTYPE html>
+<html itemscope itemtype="http://schema.org/">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="initial-scale=1.0" />
+    <meta itemprop="name" content="Casey's Blog">
+    <meta property="og:title" content="Casey's Blog" />
+    <title>Casey's Blog</title>
+    <style type="text/css"> 
+        body {font-family:Helvetica Neue,Arial,sans-serif; margin:0; color:#303030; padding:0; background-color:#cccccc;} 
+        img {border: 0;} 
+        A:link {text-decoration: none; color: #2160b2;} 
+        A:visited {text-decoration: none; color: #2160b2;} 
+        A:active {text-decoration: none; color: #2160b2;} 
+        A:hover {text-decoration: underline; color: #2160b2;} 
+        A.nh:link {text-decoration: none; color: #303030;} 
+        A.nh:visited {text-decoration: none; color: #303030;} 
+        A.nh:active {text-decoration: none; color: #303030;} 
+        A.nh:hover {text-decoration: none; color: #2160b2;} 
+        A.nh2:link {text-decoration: none; color: #FFFFFF;} 
+        A.nh2:visited {text-decoration: none; color: #FFFFFF;} 
+        A.nh2:active {text-decoration: none; color: #FFFFFF;} 
+        A.nh2:hover {text-decoration: none; color: #FFBB88;} 
+
+        div.e {background-color: #FFFF00;} 
+        div.follow {color: #FFFFFF; font-size: 10.5pt;} 
+        div.sharing {font-size: 10.5pt;} 
+
+        a.C0 {position:absolute;} 
+
+        div.C0 {position:absolute;} 
+        div.C1 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 17px;} 
+        div.C2 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 24px;} 
+        div.C3 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 30px;} 
+        div.C4 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 70px;} 
+        div.C5 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 10px; line-height: 10px; } 
+        div.C6 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 10px; line-height: 12px; } 
+        div.C7 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 18px; line-height: 22px; } 
+        div.C8 {position:absolute;font-family: Georgia,Georgia,serif; font-size: 18px; line-height: 26px; } 
+        div.C9 {position:absolute;font-size: 10.5px; font-weight: bold; } 
+        div.Ca {position:absolute;font-size: 20px;} 
+        div.Cb {position:absolute;font-size: 14px; line-height: 18px; } 
+        div.Cc {position:absolute;font-size: 14px; line-height: 18px; font-style: italic; } 
+        div.Cd {position:absolute;font-size: 14px; line-height: 18px; font-weight: bold; } 
+        div.Ce {position:absolute;font-size: 10px; line-height: 15px; } 
+    </style>
+</head>
+
+<body style='visibility:hidden;'>
+<div class="C0"  id="d2">
+    <div class="C0"  id="d99" style=" background-color:#bababa;"></div>
+    <div class="C0"  id="d100" style=" background-color:#ffffff;"></div>
+</div>
+<div class="C0"  id="d3">
+<div class="C0"  id="d4">
+    <div class="C0"  id="d5">
+        <div class="C0"  id="d30" style=" background-color:#ffffff;"></div>
+        <div class="C1"  id="d31" style=" text-align:right;">Blog</div>
+
+        <div class="C0"  id="d33" style=" background-color:#ededed;"></div>
+        <div class="C1"  id="d34" style=" text-align:right;">Bio</div>
+
+        <div class="C0"  id="d36" style=" background-color:#ededed;"></div>
+        <div class="C1"  id="d37" style=" text-align:right;">The Technician</div>
+
+        <div class="C0"  id="d39" style=" background-color:#ededed;"></div>
+        <div class="C1"  id="d40" style=" text-align:right;">No Imperfections Noted</div>
+
+        <div class="C0"  id="d42" style=" background-color:#ededed;"></div>
+        <div class="C1"  id="d43" style=" text-align:right;">The Jeff and Casey Show</div>
+
+        <div class="C0"  id="d45" style=" background-color:#ededed;"></div>
+        <div class="C1"  id="d46" style=" text-align:right;">Jeff and Casey Time</div>
+    </div>
+</div>
+
+<div class="C0"  id="d26"><img src='/images/HeadShot256x256.jpg' alt=""></div>
+<div class="C0"  id="d27" style=" background-color:#000000;"></div>
+<div class="C0"  id="d28" style=" color:#FFFFFF;">Casey Muratori<br>Seattle, WA</div>
+<div class="C0"  id="d29">
+    <a href="https://twitter.com/cmuratori"><img width="32" height="32" src="/images/follow_twitter.png" alt="" /></a> 
+    <a href="http://mollyrocket.com/casey/stream_atom.rss"><img width="32" height="32" src="/images/follow_rss.png" alt="" /></a> 
+    <a href="/casey/contact.html"><img width="32" height="32" src="/images/follow_mail.png" alt="" /></a>
+</div>
+        
+<div class="C3"  id="d48"><a class='nh' href='/casey/index.html'>Casey's Blog</a></div>
+<div class="C0"  id="d49" style=" background-color:#b23021;"></div>
+
+
+<div class="Cb"  id="d50" style=" text-align:left;">
+    post 31. <a href='/casey/stream_0031.html'>Announcing Handmade Hero</a>
+</div>
+<div class="Cb"  id="d51" style=" text-align:left;">
+    post 30. <a href='/casey/stream_0030.html'>My Indie Megabooth Picks</a>
+</div>
+<div class="Cb"  id="d52" style=" text-align:left;">
+    post 29. <a href='/casey/stream_0029.html'>The Worst API Ever Made</a>
+</div>
+<div class="Cb"  id="d53" style=" text-align:left;">
+    post 28. <a href='/casey/stream_0028.html'>Designing and Evaluating Reusable Components</a>
+</div>
+<div class="Cb"  id="d54" style=" text-align:left;">
+post 27. <a href='/casey/stream_0027.html'>Working on The Witness, Part 19</a></div>
+<div class="Cb"  id="d55" style=" text-align:left;">
+post 26. <a href='/casey/stream_0026.html'>Working on The Witness, Part 18</a></div>
+<div class="Cb"  id="d56" style=" text-align:left;">
+post 25. <a href='/casey/stream_0025.html'>Working on The Witness, Part 17</a></div>
+<div class="Cb"  id="d57" style=" text-align:left;">
+post 24. <a href='/casey/stream_0024.html'>Working on The Witness, Part 16</a></div>
+<div class="Cb"  id="d58" style=" text-align:left;">
+post 23. <a href='/casey/stream_0023.html'>Working on The Witness, Part 15</a></div>
+<div class="Cb"  id="d59" style=" text-align:left;">
+post 22. <a href='/casey/stream_0022.html'>Working on The Witness, Part 14</a></div>
+<div class="Cb"  id="d60" style=" text-align:left;">
+post 21. <a href='/casey/stream_0021.html'>Working on The Witness, Part 13</a></div>
+<div class="Cb"  id="d61" style=" text-align:left;">
+post 20. <a href='/casey/stream_0020.html'>Working on The Witness, Part 12</a></div>
+<div class="Cb"  id="d62" style=" text-align:left;">
+post 19. <a href='/casey/stream_0019.html'>Working on The Witness, Part 11</a></div>
+<div class="Cb"  id="d63" style=" text-align:left;">
+post 18. <a href='/casey/stream_0018.html'>Working on The Witness, Part 10</a></div>
+<div class="Cb"  id="d64" style=" text-align:left;">
+post 17. <a href='/casey/stream_0017.html'>Working on The Witness, Part 9</a></div>
+<div class="Cb"  id="d65" style=" text-align:left;">
+post 16. <a href='/casey/stream_0016.html'>Working on The Witness, Part 8</a></div>
+<div class="Cb"  id="d66" style=" text-align:left;">
+post 15. <a href='/casey/stream_0015.html'>Working on The Witness, Part 7</a></div>
+<div class="Cb"  id="d67" style=" text-align:left;">
+post 14. <a href='/casey/stream_0014.html'>Working on The Witness, Part 6</a></div>
+<div class="Cb"  id="d68" style=" text-align:left;">
+post 13. <a href='/casey/stream_0013.html'>Working on The Witness, Part 5</a></div>
+<div class="Cb"  id="d69" style=" text-align:left;">
+post 12. <a href='/casey/stream_0012.html'>Introducing Witness Wednesdays!</a></div>
+<div class="Cb"  id="d70" style=" text-align:left;">
+post 11. <a href='/casey/stream_0011.html'>Honest Phone Company Ads</a></div>
+<div class="Cb"  id="d71" style=" text-align:left;">
+post 10. <a href='/casey/stream_0010.html'>Baby Got Backup</a></div>
+<div class="Cb"  id="d72" style=" text-align:left;">
+post 9. <a href='/casey/stream_0009.html'>Working on The Witness, Part 4</a></div>
+<div class="Cb"  id="d73" style=" text-align:left;">
+post 8. <a href='/casey/stream_0008.html'>Working on The Witness, Part 3</a></div>
+<div class="Cb"  id="d74" style=" text-align:left;">
+post 7. <a href='/casey/stream_0007.html'>Working on The Witness, Part 2</a></div>
+<div class="Cb"  id="d75" style=" text-align:left;">
+post 6. <a href='/casey/stream_0006.html'>Working on The Witness, Part 1</a></div>
+<div class="Cb"  id="d76" style=" text-align:left;">
+post 5. <a href='/casey/stream_0005.html'>Dear PayPal</a></div>
+<div class="Cb"  id="d77" style=" text-align:left;">
+post 4. <a href='/casey/stream_0004.html'>The Next Twenty Years</a></div>
+<div class="Cb"  id="d78" style=" text-align:left;">
+post 3. <a href='/casey/stream_0003.html'>My Gingerbread Guantanamo</a></div>
+<div class="Cb"  id="d79" style=" text-align:left;">
+post 2. <a href='/casey/stream_0002.html'>Technician Paperback ETA</a></div>
+<div class="Cb"  id="d80" style=" text-align:left;">
+post 1. <a href='/casey/stream_0001.html'>Brand new web engine, brand new book</a></div>
+
+
+<div class="C0"  id="d81" style=" background-repeat:repeat; background-image:url('/images/shadow44_0_1.png');">
+</div>
+<div class="C0"  id="d82" style=" background-repeat:repeat; background-image:url('/images/shadow44_0_1.png');">
+</div>
+<div class="C0"  id="d83" style=" background-repeat:repeat; background-image:url('/images/shadow44_1_2.png');">
+</div>
+<div class="C0"  id="d84" style=" background-repeat:repeat; background-image:url('/images/shadow44_2_1.png');">
+</div>
+<div class="C0"  id="d85" style=" background-repeat:repeat; background-image:url('/images/shadow44_0_2.png');">
+</div>
+<div class="C0"  id="d86" style=" background-repeat:repeat; background-image:url('/images/shadow44_1_2.png');">
+</div>
+<div class="C0"  id="d87" style=" background-repeat:repeat; background-image:url('/images/shadow44_2_2.png');">
+</div>
+<div class="C0"  id="d88" style=" background-repeat:repeat; background-image:url('/images/shadow44_0_0.png');">
+</div>
+<div class="C0"  id="d89" style=" background-repeat:repeat; background-image:url('/images/shadow44_1_0.png');">
+</div>
+<div class="C0"  id="d90" style=" background-repeat:repeat; background-image:url('/images/shadow44_2_0.png');">
+</div>
+<div class="Ce"  id="d91" style=" text-align:center;">
+Site design and technology &#169; Copyright 2005-2014 by Molly Rocket, Inc., All Rights Reserved.<br>Contents are assumed to be copyright by their individual authors.<br>Do not duplicate without their express permission.</div>
+<div class="C0"  id="d92" style=" background-repeat:repeat; background-image:url('/images/shadow8_0_1.png');">
+</div>
+<div class="C0"  id="d93" style=" background-repeat:repeat; background-image:url('/images/shadow8_1_2.png');">
+</div>
+<div class="C0"  id="d94" style=" background-repeat:repeat; background-image:url('/images/shadow8_0_2.png');">
+</div>
+<div class="C0"  id="d95" style=" background-repeat:repeat; background-image:url('/images/shadow8_0_0.png');">
+</div>
+<div class="C0"  id="d96" style=" background-repeat:repeat; background-image:url('/images/shadow8_1_0.png');">
+</div>
+<div class="C0"  id="d97" style=" background-repeat:repeat; background-image:url('/images/shadow8_0_1.png');">
+</div>
+<div class="C0"  id="d98" style=" background-repeat:repeat; background-image:url('/images/shadow8_2_1.png');">
+</div>
+</div>
+<div class="C0"  id="d6">
+<a class="C0"  id="d32" href="/casey/index.html" onmouseover="f7();"  onmouseout="f8();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png');">
+</a>
+<a class="C0"  id="d35" href="/casey/about.html" onmouseover="f9();"  onmouseout="f10();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png');">
+</a>
+<a class="C0"  id="d38" href="/projects/technician.html" onmouseover="f11();"  onmouseout="f12();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png');">
+</a>
+<a class="C0"  id="d41" href="/projects/no_imperfections_noted.html" onmouseover="f13();"  onmouseout="f14();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png');">
+</a>
+<a class="C0"  id="d44" href="/jacs/index.html" onmouseover="f15();"  onmouseout="f16();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png');">
+</a>
+<a class="C0"  id="d47" href="/projects/jact.html" onmouseover="f17();"  onmouseout="f18();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png');">
+</a>
+</div>
+<div class="C0"  id="d7">
+<div class="C0"  id="d9" style=" background-color:#000000; position:fixed;">
+</div>
+<div class="C0"  id="d10" style=" background-color:#000000; position:fixed;">
+</div>
+<div class="C0"  id="d11" style=" color:#808080; position:fixed; text-align:left;">
+casey muratori</div>
+<div class="C0"  id="d12" style=" background-color:#000000; position:fixed;">
+</div>
+<div class="C0"  id="d13" style=" color:#808080; position:fixed; text-align:left;">
+</div>
+<div class="C0"  id="d14" style=" background-color:#000000; position:fixed;">
+</div>
+<div class="C0"  id="d15" style=" color:#404040; position:fixed; text-align:right;">
+</div>
+<div class="C0"  id="d16" style=" background-color:#000000; position:fixed;">
+</div>
+<div class="C0"  id="d17" style=" color:#404040; position:fixed; text-align:right;">
+</div>
+<div class="C0"  id="d18" style=" background-color:#000000; position:fixed;">
+</div>
+<div class="C0"  id="d19" style=" color:#808080; position:fixed; text-align:right;">
+mollyrocket.com</div>
+<div class="C0"  id="d25" style=" background-repeat:repeat; background-image:url('/images/shadow8_1_2.png'); position:fixed;">
+</div>
+</div>
+<div class="C0"  id="d8">
+<a class="C0"  id="d20" href="/casey/about.html" onmouseover="f1();"  onmouseout="f2();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png'); position:fixed;">
+</a>
+<a class="C0"  id="d21" href="http://mollyrocket.com" onmouseover="f3();"  onmouseout="f4();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png'); position:fixed;">
+</a>
+<a class="C0"  id="d22" href="/casey/index.html" onmouseover="f5();"  onmouseout="f6();"  style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png'); position:fixed;">
+</a>
+<div class="C0"  id="d23" style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png'); position:fixed;">
+</div>
+<div class="C0"  id="d24" style=" background-repeat:repeat; background-image:url('/images/invisible1x1.png'); position:fixed;">
+</div>
+</div>
+
+<script type="text/javascript">
+Mr = Math.round;
+function fM(A,B) 
+{
+    return((A > B) ? A : B);
+}
+
+function fI(N)
+{
+    return(document.getElementById(N));
+}
+
+function fP(D,X,Y,W,H)
+{
+    T = D.style;
+    T.left = Mr(X)+"px";
+    T.top = Mr(Y)+"px";
+    T.width = Mr(W)+"px";
+    T.height = Mr(H)+"px";
+}
+
+function fW(D,W)
+{
+    D.style.width = Mr(W)+"px";
+}
+
+function fH(D)
+{
+    return(D.offsetHeight);
+}
+
+d1=fI("d1")
+d2=fI("d2")
+d3=fI("d3")
+d4=fI("d4")
+d5=fI("d5")
+d6=fI("d6")
+d7=fI("d7")
+d8=fI("d8")
+d9=fI("d9")
+d10=fI("d10")
+d11=fI("d11")
+d12=fI("d12")
+d13=fI("d13")
+d14=fI("d14")
+d15=fI("d15")
+d16=fI("d16")
+d17=fI("d17")
+d18=fI("d18")
+d19=fI("d19")
+d20=fI("d20")
+d21=fI("d21")
+d22=fI("d22")
+d23=fI("d23")
+d24=fI("d24")
+d25=fI("d25")
+d26=fI("d26")
+d27=fI("d27")
+d28=fI("d28")
+d29=fI("d29")
+d30=fI("d30")
+d31=fI("d31")
+d32=fI("d32")
+d33=fI("d33")
+d34=fI("d34")
+d35=fI("d35")
+d36=fI("d36")
+d37=fI("d37")
+d38=fI("d38")
+d39=fI("d39")
+d40=fI("d40")
+d41=fI("d41")
+d42=fI("d42")
+d43=fI("d43")
+d44=fI("d44")
+d45=fI("d45")
+d46=fI("d46")
+d47=fI("d47")
+d48=fI("d48")
+d49=fI("d49")
+d50=fI("d50")
+d51=fI("d51")
+d52=fI("d52")
+d53=fI("d53")
+d54=fI("d54")
+d55=fI("d55")
+d56=fI("d56")
+d57=fI("d57")
+d58=fI("d58")
+d59=fI("d59")
+d60=fI("d60")
+d61=fI("d61")
+d62=fI("d62")
+d63=fI("d63")
+d64=fI("d64")
+d65=fI("d65")
+d66=fI("d66")
+d67=fI("d67")
+d68=fI("d68")
+d69=fI("d69")
+d70=fI("d70")
+d71=fI("d71")
+d72=fI("d72")
+d73=fI("d73")
+d74=fI("d74")
+d75=fI("d75")
+d76=fI("d76")
+d77=fI("d77")
+d78=fI("d78")
+d79=fI("d79")
+d80=fI("d80")
+d81=fI("d81")
+d82=fI("d82")
+d83=fI("d83")
+d84=fI("d84")
+d85=fI("d85")
+d86=fI("d86")
+d87=fI("d87")
+d88=fI("d88")
+d89=fI("d89")
+d90=fI("d90")
+d91=fI("d91")
+d92=fI("d92")
+d93=fI("d93")
+d94=fI("d94")
+d95=fI("d95")
+d96=fI("d96")
+d97=fI("d97")
+d98=fI("d98")
+d99=fI("d99")
+d100=fI("d100")
+
+
+function L()
+{
+    var w = 0;
+    var h = 0;
+    if(typeof(window.innerWidth) == 'number'){
+        w = window.innerWidth;
+        h = window.innerHeight;
+    } else if(document.documentElement && 
+             (document.documentElement.clientWidth || document.documentElement.clientHeight)){
+        w = document.documentElement.clientWidth;
+        h = document.documentElement.clientHeight;
+    } else if(document.body && 
+              (document.body.clientWidth || document.body.clientHeight)){
+        w = document.body.clientWidth;
+        h = document.body.clientHeight;
+    }
+    
+    u13=(256*2);
+    u14=(600+u13);
+    u16=(84*2);
+    u17=(u14+u16);
+    fW(d11,u17);
+    fW(d13,u17);
+    fW(d15,u17);
+    fW(d19,u17);
+    fW(d17,u17);
+    
+u158=(10*2);
+u159=(256-u158);
+fW(d28,u159);
+u163=(10*2);
+u164=(256-u163);
+fW(d29,u164);
+u4=(w/2);
+u19=(u17/2);
+u20=Mr(u19);
+u21=(u4-u20);
+u23=fM(u21,10);
+u24=(256+u23);
+u195=(u24-20);
+u193=(u23+20);
+u196=(u195-u193);
+fW(d31,u196);
+u209=(u24-20);
+u207=(u23+20);
+u210=(u209-u207);
+fW(d34,u210);
+u223=(u24-20);
+u221=(u23+20);
+u224=(u223-u221);
+fW(d37,u224);
+u237=(u24-20);
+u235=(u23+20);
+u238=(u237-u235);
+fW(d40,u238);
+u251=(u24-20);
+u249=(u23+20);
+u252=(u251-u249);
+fW(d43,u252);
+u265=(u24-20);
+u263=(u23+20);
+u266=(u265-u263);
+fW(d46,u266);
+u25=(84+u24);
+u26=(600+u25);
+u280=(u26-u25);
+fW(d48,u280);
+u309=(u26+0);
+u308=(u25+0);
+u310=(u309-u308);
+fW(d50,u310);
+u324=(u26+0);
+u323=(u25+0);
+u325=(u324-u323);
+fW(d51,u325);
+u339=(u26+0);
+u338=(u25+0);
+u340=(u339-u338);
+fW(d52,u340);
+u354=(u26+0);
+u353=(u25+0);
+u355=(u354-u353);
+fW(d53,u355);
+u369=(u26+0);
+u368=(u25+0);
+u370=(u369-u368);
+fW(d54,u370);
+u384=(u26+0);
+u383=(u25+0);
+u385=(u384-u383);
+fW(d55,u385);
+u399=(u26+0);
+u398=(u25+0);
+u400=(u399-u398);
+fW(d56,u400);
+u414=(u26+0);
+u413=(u25+0);
+u415=(u414-u413);
+fW(d57,u415);
+u429=(u26+0);
+u428=(u25+0);
+u430=(u429-u428);
+fW(d58,u430);
+u444=(u26+0);
+u443=(u25+0);
+u445=(u444-u443);
+fW(d59,u445);
+u459=(u26+0);
+u458=(u25+0);
+u460=(u459-u458);
+fW(d60,u460);
+u474=(u26+0);
+u473=(u25+0);
+u475=(u474-u473);
+fW(d61,u475);
+u489=(u26+0);
+u488=(u25+0);
+u490=(u489-u488);
+fW(d62,u490);
+u504=(u26+0);
+u503=(u25+0);
+u505=(u504-u503);
+fW(d63,u505);
+u519=(u26+0);
+u518=(u25+0);
+u520=(u519-u518);
+fW(d64,u520);
+u534=(u26+0);
+u533=(u25+0);
+u535=(u534-u533);
+fW(d65,u535);
+u549=(u26+0);
+u548=(u25+0);
+u550=(u549-u548);
+fW(d66,u550);
+u564=(u26+0);
+u563=(u25+0);
+u565=(u564-u563);
+fW(d67,u565);
+u579=(u26+0);
+u578=(u25+0);
+u580=(u579-u578);
+fW(d68,u580);
+u594=(u26+0);
+u593=(u25+0);
+u595=(u594-u593);
+fW(d69,u595);
+u609=(u26+0);
+u608=(u25+0);
+u610=(u609-u608);
+fW(d70,u610);
+u624=(u26+0);
+u623=(u25+0);
+u625=(u624-u623);
+fW(d71,u625);
+u639=(u26+0);
+u638=(u25+0);
+u640=(u639-u638);
+fW(d72,u640);
+u654=(u26+0);
+u653=(u25+0);
+u655=(u654-u653);
+fW(d73,u655);
+u669=(u26+0);
+u668=(u25+0);
+u670=(u669-u668);
+fW(d74,u670);
+u684=(u26+0);
+u683=(u25+0);
+u685=(u684-u683);
+fW(d75,u685);
+u699=(u26+0);
+u698=(u25+0);
+u700=(u699-u698);
+fW(d76,u700);
+u714=(u26+0);
+u713=(u25+0);
+u715=(u714-u713);
+fW(d77,u715);
+u729=(u26+0);
+u728=(u25+0);
+u730=(u729-u728);
+fW(d78,u730);
+u744=(u26+0);
+u743=(u25+0);
+u745=(u744-u743);
+fW(d79,u745);
+u759=(u26+0);
+u758=(u25+0);
+u760=(u759-u758);
+fW(d80,u760);
+u27=(84+u26);
+u791=(u27-u24);
+fW(d91,u791);
+u28=(256+u27);
+u143=(u28-u23);
+u144=fM(w,u143);
+u49=fH(d11);
+u55=fH(d13);
+u58=fH(d15);
+u52=fH(d19);
+u61=fH(d17);
+u62=fM(u52,u61);
+u63=fM(u58,u62);
+u64=fM(u55,u63);
+u65=fM(u49,u64);
+u66=(10+u65);
+u69=(10+u66);
+u67=(u23-10);
+u70=(u24-u67);
+u71=(u69-0);
+u72=(10+u67);
+u73=(u66-u49);
+u74=(u24-10);
+u75=(u74-u72);
+u76=(u66-u73);
+u81=(u26-80);
+u82=(u81-u25);
+u83=(u69-0);
+u84=(u66-u55);
+u86=(u26-80);
+u87=(u86-u25);
+u88=(u66-u84);
+u95=(u26-80);
+u98=(u26-40);
+u99=(u98-u95);
+u100=(u69-0);
+u102=(u26-80);
+u103=(u66-u58);
+u105=(u26-40);
+u106=(u105-u102);
+u107=(u66-u103);
+u116=(u26-40);
+u118=(u26-u116);
+u119=(u69-0);
+u121=(u26-40);
+u122=(u66-u61);
+u123=(u26-u121);
+u124=(u66-u122);
+u131=(10+u28);
+u132=(u131-u27);
+u133=(u69-0);
+u134=(10+u27);
+u135=(u66-u52);
+u136=(u131-10);
+u137=(u136-u134);
+u138=(u66-u135);
+u78=(u69-0);
+u140=(u69-0);
+u91=(u26-80);
+u92=(u91-u25);
+u93=(u69-0);
+u109=(u26-80);
+u112=(u26-40);
+u113=(u112-u109);
+u114=(u69-0);
+u126=(u26-40);
+u128=(u26-u126);
+u129=(u69-0);
+u148=(10+u69);
+u167=(u148+256);
+u161=fH(d28);
+u166=fH(d29);
+u168=(u161+u166);
+u170=(10*3);
+u171=(u168+u170);
+u172=(u23+10);
+u173=(10+u167);
+u175=(10*2);
+u176=(256-u175);
+u177=(u161+u167);
+u179=(10*2);
+u180=(u177+u179);
+u182=(10*2);
+u183=(256-u182);
+u184=(256+u161);
+u185=(u166+u184);
+u187=(10*3);
+u188=(u185+u187);
+u189=(u148+u188);
+u149=(u24-u23);
+u198=fH(d31);
+u200=(u198*3);
+u201=(u189+u198);
+u202=(u189+u200);
+u212=fH(d34);
+u214=(u212*3);
+u215=(u202+u212);
+u217=(u202+u214);
+u226=fH(d37);
+u228=(u226*3);
+u229=(u217+u226);
+u231=(u217+u228);
+u240=fH(d40);
+u242=(u240*3);
+u243=(u231+u240);
+u245=(u231+u242);
+u254=fH(d43);
+u256=(u254*3);
+u257=(u245+u254);
+u259=(u245+u256);
+u268=fH(d46);
+u270=(u268*3);
+u271=(u259+u268);
+u284=(u148+30);
+u289=fH(d48);
+u291=(u284+u289);
+u293=(2*3);
+u294=(u291+u293);
+u296=(2*5);
+u297=(u289+u296);
+u298=(u284+u297);
+u304=(u298+20);
+u312=fH(d50);
+u313=(u304+u312);
+u319=(u313+15);
+u327=fH(d51);
+u328=(u319+u327);
+u334=(u328+15);
+u342=fH(d52);
+u343=(u334+u342);
+u349=(u343+15);
+u357=fH(d53);
+u358=(u349+u357);
+u364=(u358+15);
+u372=fH(d54);
+u373=(u364+u372);
+u379=(u373+15);
+u387=fH(d55);
+u388=(u379+u387);
+u394=(u388+15);
+u402=fH(d56);
+u403=(u394+u402);
+u409=(u403+15);
+u417=fH(d57);
+u418=(u409+u417);
+u424=(u418+15);
+u432=fH(d58);
+u433=(u424+u432);
+u439=(u433+15);
+u447=fH(d59);
+u448=(u439+u447);
+u454=(u448+15);
+u462=fH(d60);
+u463=(u454+u462);
+u469=(u463+15);
+u477=fH(d61);
+u478=(u469+u477);
+u484=(u478+15);
+u492=fH(d62);
+u493=(u484+u492);
+u499=(u493+15);
+u507=fH(d63);
+u508=(u499+u507);
+u514=(u508+15);
+u522=fH(d64);
+u523=(u514+u522);
+u529=(u523+15);
+u537=fH(d65);
+u538=(u529+u537);
+u544=(u538+15);
+u552=fH(d66);
+u553=(u544+u552);
+u559=(u553+15);
+u567=fH(d67);
+u568=(u559+u567);
+u574=(u568+15);
+u582=fH(d68);
+u583=(u574+u582);
+u589=(u583+15);
+u597=fH(d69);
+u598=(u589+u597);
+u604=(u598+15);
+u612=fH(d70);
+u613=(u604+u612);
+u619=(u613+15);
+u627=fH(d71);
+u628=(u619+u627);
+u634=(u628+15);
+u642=fH(d72);
+u643=(u634+u642);
+u649=(u643+15);
+u657=fH(d73);
+u658=(u649+u657);
+u664=(u658+15);
+u672=fH(d74);
+u673=(u664+u672);
+u679=(u673+15);
+u687=fH(d75);
+u688=(u679+u687);
+u694=(u688+15);
+u702=fH(d76);
+u703=(u694+u702);
+u709=(u703+15);
+u717=fH(d77);
+u718=(u709+u717);
+u724=(u718+15);
+u732=fH(d78);
+u733=(u724+u732);
+u739=(u733+15);
+u747=fH(d79);
+u748=(u739+u747);
+u754=(u748+15);
+u762=fH(d80);
+u772=(u24-44);
+u774=(u189-u148);
+u777=(u24-44);
+u273=(u259+u270);
+u763=(u754+u762);
+u767=(u763+70);
+u768=fM(u273,u767);
+u769=fM(u148,u768);
+u779=(u769-u202);
+u784=(u769-u148);
+u787=(u24-44);
+u798=(u24-44);
+u800=(u148-44);
+u805=(u148-44);
+u809=(u148-44);
+u816=(u769+30);
+u814=fH(d91);
+u823=(u23-8);
+u825=(u273-u148);
+u830=(u23-8);
+u835=(u23-8);
+u837=(u148-8);
+u842=(u148-8);
+u846=(u23-18);
+u817=(u769+u814);
+u819=(u817+60);
+u820=fM(h,u819);
+u851=(u28+10);
+u857=(10*2);
+u858=(u143+u857);
+fP(d99,u67,0,u858,u820);
+fP(d100,u24,u148,u791,u784);
+fP(d30,u23,u189,u149,u200);
+fP(d31,u193,u201,u196,u198);
+fP(d33,u23,u202,u149,u214);
+fP(d34,u207,u215,u210,u212);
+fP(d36,u23,u217,u149,u228);
+fP(d37,u221,u229,u224,u226);
+fP(d39,u23,u231,u149,u242);
+fP(d40,u235,u243,u238,u240);
+fP(d42,u23,u245,u149,u256);
+fP(d43,u249,u257,u252,u254);
+fP(d45,u23,u259,u149,u270);
+fP(d46,u263,u271,u266,u268);
+fP(d26,u23,u148,256,256);
+fP(d27,u23,u167,256,u171);
+fP(d28,u172,u173,u176,u161);
+fP(d29,u172,u180,u183,u166);
+fP(d48,u25,u284,u280,u289);
+fP(d49,u25,u294,u280,2);
+fP(d50,u308,u304,u310,u312);
+fP(d51,u323,u319,u325,u327);
+fP(d52,u338,u334,u340,u342);
+fP(d53,u353,u349,u355,u357);
+fP(d54,u368,u364,u370,u372);
+fP(d55,u383,u379,u385,u387);
+fP(d56,u398,u394,u400,u402);
+fP(d57,u413,u409,u415,u417);
+fP(d58,u428,u424,u430,u432);
+fP(d59,u443,u439,u445,u447);
+fP(d60,u458,u454,u460,u462);
+fP(d61,u473,u469,u475,u477);
+fP(d62,u488,u484,u490,u492);
+fP(d63,u503,u499,u505,u507);
+fP(d64,u518,u514,u520,u522);
+fP(d65,u533,u529,u535,u537);
+fP(d66,u548,u544,u550,u552);
+fP(d67,u563,u559,u565,u567);
+fP(d68,u578,u574,u580,u582);
+fP(d69,u593,u589,u595,u597);
+fP(d70,u608,u604,u610,u612);
+fP(d71,u623,u619,u625,u627);
+fP(d72,u638,u634,u640,u642);
+fP(d73,u653,u649,u655,u657);
+fP(d74,u668,u664,u670,u672);
+fP(d75,u683,u679,u685,u687);
+fP(d76,u698,u694,u700,u702);
+fP(d77,u713,u709,u715,u717);
+fP(d78,u728,u724,u730,u732);
+fP(d79,u743,u739,u745,u747);
+fP(d80,u758,u754,u760,u762);
+fP(d81,u772,u148,44,u774);
+fP(d82,u777,u202,44,u779);
+fP(d83,u23,u202,u149,44);
+fP(d84,u27,u148,44,u784);
+fP(d85,u787,u769,44,44);
+fP(d86,u24,u769,u791,44);
+fP(d87,u27,u769,44,44);
+fP(d88,u798,u800,44,44);
+fP(d89,u24,u805,u791,44);
+fP(d90,u27,u809,44,44);
+fP(d91,u24,u816,u791,u814);
+fP(d92,u823,u148,8,u825);
+fP(d93,u23,u273,u149,8);
+fP(d94,u830,u273,8,8);
+fP(d95,u835,u837,8,8);
+fP(d96,u23,u842,u149,8);
+fP(d97,u846,0,8,u820);
+fP(d98,u851,0,8,u820);
+fP(d32,u23,u189,u149,u200);
+fP(d35,u23,u202,u149,u214);
+fP(d38,u23,u217,u149,u228);
+fP(d41,u23,u231,u149,u242);
+fP(d44,u23,u245,u149,u256);
+fP(d47,u23,u259,u149,u270);
+fP(d9,0,0,u144,u69);
+fP(d10,u67,0,u70,u71);
+fP(d11,u72,u73,u75,u76);
+fP(d12,u25,0,u82,u83);
+fP(d13,u25,u84,u87,u88);
+fP(d14,u95,0,u99,u100);
+fP(d15,u102,u103,u106,u107);
+fP(d16,u116,0,u118,u119);
+fP(d17,u121,u122,u123,u124);
+fP(d18,u27,0,u132,u133);
+fP(d19,u134,u135,u137,u138);
+fP(d25,0,u69,u144,8);
+fP(d20,u67,0,u70,u78);
+fP(d21,u27,0,u132,u140);
+fP(d22,u25,0,u92,u93);
+fP(d23,u109,0,u113,u114);
+fP(d24,u126,0,u128,u129);
+}function f1() {document.getElementById('d10').style.backgroundColor = '#000000';document.getElementById('d11').style.color = '#FFFFFF';}
+function f2() {document.getElementById('d10').style.backgroundColor = '#000000';document.getElementById('d11').style.color = '#808080';}
+function f3() {document.getElementById('d18').style.backgroundColor = '#000000';document.getElementById('d19').style.color = '#FFFFFF';}
+function f4() {document.getElementById('d18').style.backgroundColor = '#000000';document.getElementById('d19').style.color = '#808080';}
+function f5() {document.getElementById('d12').style.backgroundColor = '#000000';document.getElementById('d13').style.color = '#FFFFFF';}
+function f6() {document.getElementById('d12').style.backgroundColor = '#000000';document.getElementById('d13').style.color = '#808080';}
+function f7() {document.getElementById('d30').style.backgroundColor = '#ffffff';document.getElementById('d31').style.color = '#303030';}
+function f8() {document.getElementById('d30').style.backgroundColor = '#ffffff';document.getElementById('d31').style.color = '#303030';}
+function f9() {document.getElementById('d33').style.backgroundColor = '#ffffff';document.getElementById('d34').style.color = '#000000';}
+function f10() {document.getElementById('d33').style.backgroundColor = '#ededed';document.getElementById('d34').style.color = '#303030';}
+function f11() {document.getElementById('d36').style.backgroundColor = '#ffffff';document.getElementById('d37').style.color = '#000000';}
+function f12() {document.getElementById('d36').style.backgroundColor = '#ededed';document.getElementById('d37').style.color = '#303030';}
+function f13() {document.getElementById('d39').style.backgroundColor = '#ffffff';document.getElementById('d40').style.color = '#000000';}
+function f14() {document.getElementById('d39').style.backgroundColor = '#ededed';document.getElementById('d40').style.color = '#303030';}
+function f15() {document.getElementById('d42').style.backgroundColor = '#ffffff';document.getElementById('d43').style.color = '#000000';}
+function f16() {document.getElementById('d42').style.backgroundColor = '#ededed';document.getElementById('d43').style.color = '#303030';}
+function f17() {document.getElementById('d45').style.backgroundColor = '#ffffff';document.getElementById('d46').style.color = '#000000';}
+function f18() {document.getElementById('d45').style.backgroundColor = '#ededed';document.getElementById('d46').style.color = '#303030';}
+L();document.body.style.visibility='visible';window.onresize=L;
+// 860 vars
+</script></body></html>

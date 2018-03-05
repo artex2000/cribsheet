@@ -1,20 +1,54 @@
+#GIT REFERENCE
+
+## GIT CONFIG
+Set user name
+    git config --global user.name "User Name"
+Set user email
+    git config --global user.email "user@mail.com"
+
+## GIT LOG
+See all commits for particular file
+    git log --abbrev-commit --pretty=oneline -- ./path/to/file 
+See commits present in one branch but absent in another
+    git log absent..present
+See log in custom format
+    git log -n1 --pretty=format:"%H at %cD"
+
+## GIT RESET
+Unstage file from index, but keep it modified
+    git reset HEAD ./path/to/file 
+Move head 3 commits back
+    git reset HEAD~3 - move head three commits back
+
+## GIT REBASE
+Rebase current branch on top of base branch
+    git rebase base_branch
+Replay commits done on *branch3* after fork from *branch2* on *branch1*
+    git rebase --onto branch1 branch2 branch3
+
+## GIT BRANCH
+Delete local branch
+    git branch -d local_branch_name 
+Force delete unmerged local branch
+    git branch -D local_branch_name 
+
+## GIT CHECKOUT
+Undo all modifications to file
+    git checkout -- ./path/to/file 
+Get file from different branch
+    git checkout diff_branch -- ./path/to/file 
+Get branch from remote repo
+    git fetch origin
+    git checkout --track origin/branch_name to the same name
+git checkout --track -b local_name origin/branch_name - to the different name
+
+
 git pull == git fetch + git merge origin/master
-git log --abbrev-commit --pretty=oneline -- ./path/to/file - to see all commits, where file was changed
-git config --global user.[name,email] "new_value" - set user name and email
-git reset HEAD ./path/to/file - unstage file, but keep it modified
-git reset HEAD~3 - move head three commits back
-git checkout -- ./path/to/file - undo all modifications done to a file
 git status - shows what is changed, what is staged
-git rebase <base branch name> - rebase current branch to <base-branch> and put local commits on top
-git rebase --onto one_branch two_branch three_branch - replay commits done to three since forking two on top of one
 git push remote [what] where 
 git push origin local_branch:remote_branch
 
-git log -n1 --pretty=format:"%H at %cD"
-git log branch1..branch2 - shows commits present in 2 but absent in 1
 
-git branch -d local_branch_name - delete local branch
-git branch -D local_branch_name - force delete local branch
 git push origin --delete remote_branch_name - delete remote branch
 git fetch --all --prune - remove local tracking branches when remote branch is deleted
 
@@ -34,10 +68,6 @@ on local
 ~git push --all tmp
 ~git remote remove tmp
 
-set new remote url
-~git remote set-url origin https://new/url
-
-git checkout <branch-name> -- ./path/to/file - update file from other branch
 git clone to specific dir
     git clone /path/to/repo dirname
     
@@ -53,10 +83,6 @@ git checkout -b local_branch
 git commit -m "some changes"
 git push --set-upstream origin local_branch (as a side note --set-upstream == -u)
 
-get remote branch that is not in local repo
-git fetch origin
-git checkout --track origin/branch_name to the same name
-git checkout --track -b local_name origin/branch_name - to the different name
 
 compare files in different branches
 git diff branch1 branch2 -- path/to/file
@@ -75,6 +101,3 @@ git stash pop - apply+drop together
 
 git symbolic-ref --short -q HEAD - get branch name in script
 git checkout <SHA1> - jump to particular revision (both forward and back). This puts you in detached HEAD state (similar to separate branch). Use git checkout <branch-name> to attach HEAD back.
-
-git config --list - show current settings
-

@@ -8,6 +8,10 @@ hexdump -v -C filename
 https://www.suse.com/documentation/sles11/book_kvm/data/kvm_qemu_virtfs.html qemu docs
 ln -s target link_name
 
+Write ISO file to CD-ROM
+$ cdrskin -v dev=/dev/hdc speed=12 fs=8m \
+  blank=as_needed -eject padsize=300k my_image.iso
+
 cp --parents filename /newdir - copy file into new dir preserving relative path
 mkdosfs /dev/sdx1 -s 16 -F 32 - format partition with VFAT32
 
