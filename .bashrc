@@ -12,12 +12,69 @@ fi
 # User specific aliases and functions
 setxkbmap -option caps:escape
 set -o vi
+bind -m vi-insert '"\e.": yank-last-arg'
+bind -m vi-insert '"\e,": yank-nth-arg'
+bind -x '"\C-p": vim $(edit_file)'
+bind -x '"\C-o": bm $(pick_inf_file)'
+#bind -x '"\C-p": vim $(fzf --height 40% --reverse)'
 
-export TOOLS_DIR=/home/artex2000/work/Tools
-export IA32_TOOLS_DIR=/usr/bin
-export X64_TOOLS_DIR=/usr/bin
-export NASM_PREFIX=/usr/bin/
+alias ~~='cd ~'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ll='ls -l'
+alias la='ls -al'
+alias gk='cd ~/work/Kabylake/Source'
+alias gm='cd ~/work/Mustang/Source'
+alias gj='cd ~/work/Juno/Source'
 
-export AARCH64_TOOLS_DIR=/home/artex2000/work/linaro/gcc/bin
-export AARCH64_TOOL_PREFIX=aarch64-linux-gnu-
 . /home/artex2000/.ps1
+
+#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+#export FZF_COMPLETION_TRIGGER=',,'
+#export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*" 2> /dev/null'
+#export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
+#export FZF_ALT_C_COMMAND="cd ~/; bfs -type d -nohidden | sed s#^\.\/##"
+
+#gd - go to directory
+gd() {
+    local name
+    local bfs_pid
+    name=`sh -c 'echo "$$"; exec bfs . -type d' | (
+        read bfs_pid
+        fzf --height 40% --reverse 
+        kill "$bfs_pid" 2>/dev/null
+        true)`
+    cd "$name"
+}
+
+edit_file () {
+    local name
+    local rg_pid
+    name=`sh -c 'echo "$$"; exec rg --files --glob "!.git/*"' | (
+        read rg_pid
+        fzf --height 40% --reverse
+        kill "$rg_pid" 2>/dev/null
+        true)`
+    if [ ! -z "$name" ]; then
+        echo "$name"
+    else
+        echo ""
+    fi
+}
+
+pick_inf_file () {
+    local name
+    local rg_pid
+    name=`sh -c 'echo "$$"; exec rg --files --glob "!.git/*" --glob "*.inf"' | (
+        read rg_pid
+        fzf --height 40% --reverse
+        kill "$rg_pid" 2>/dev/null
+        true)`
+    if [ ! -z "$name" ]; then
+        echo "$name"
+    else
+        echo ""
+    fi
+}

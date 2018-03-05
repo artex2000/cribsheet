@@ -1,0 +1,18 @@
+#!/bin/sh
+
+project=$(pwd|rev|cut -d / -f2|rev)
+if [ ! -d $HOME/work/build_scripts/$project ]; then
+    echo "No scripts to build $project"
+    exit 1
+fi
+if [ ! -x $HOME/work/build_scripts/$project/build_module ]; then
+    echo "No executable script to build module in $project"
+    exit 1
+fi
+if [ -z $* ]; then
+    echo "Usage: bm /path/to/module/inf"
+    exit 1
+else
+    $HOME/work/build_scripts/$project/build_module $*
+fi
+

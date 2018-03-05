@@ -1,0 +1,42 @@
+#!/bin/sh
+if [ -z $1 ]; then
+    echo "Usage: bm /path/to/inf"
+    exit 1
+fi
+
+conf_file=Conf/target.txt
+if [ ! -f $conf_file ]; then
+    echo "File $conf_file not found, aborting"
+    exit 1
+fi
+
+target=$(cat $conf_file|grep TARGET|rev|cut -f1 --delimiter=' '|rev)
+if [ -z $target ]; then
+    echo "Cannot find target description in $conf_file"
+    exit 1
+fi
+
+if [ "$target" == "DEBUG" ]; then
+    EXTERNAL_CC_FLAGS="-D PI_SPECIFICATION_VERSION=0x10028 -D EFI_SPECIFICATION_VERSION=0x2003C -Os -DEFI_DEBUG"
+else
+    EXTERNAL_CC_FLAGS="-D PI_SPECIFICATION_VERSION=0x10028 -D EFI_SPECIFICATION_VERSION=0x2003C -Os -DMDEPKG_NDEBUG"
+fi
+
+WORKSPACE=$(pwd)
+EFI_SOURCE=$(pwd)
+EDK_TOOLS_PATH=$HOME/work/Tools
+ASL_COMPILER=iasl6
+CONFIGURATION_DIR=AmiPkg/Configuration/
+export WORKSPACE
+export EFI_SOURCE
+export EDK_TOOLS_PATH
+export ASL_COMPILER
+export PATH=$PATH:$HOME/work/Tools:$HOME/work/Tools/Bin/Linux64
+export EXTERNAL_CC_FLAGS
+export CONFIGURATION_DIR
+
+export TOOLS_DIR=$HOME/work/Tools
+export AARCH64_TOOLS_DIR=$HOME/work/apm/8.0.10-le/bin
+export AARCH64_TOOL_PREFIX=aarch64-apm-linux-gnu-
+
+$HOME/work/Tools/Bin/Linux64/build -m $1 

@@ -1,0 +1,10 @@
+#!/bin/sh
+OUT=${OUT_FILE:-./gcc_log.txt}
+ARGS=$*
+if [[ ! "$*" =~ nostdlib && ! "$*" =~ assembler && ! "$*" =~ DVFRCOMPILE && ! "$*" =~ Library ]]; then
+    echo "{" >> $OUT
+    echo -e "\t\"directory\"": "\"$PWD\"", >> $OUT
+    echo -e "\t\"command\"": "\"/usr/bin/clang $*\"", >> $OUT
+    echo -e "\t\"file\"": "\"${ARGS##* }\"" >> $OUT
+    echo "}," >> $OUT
+fi

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mv $1 ${1}.utf8
+iconv -f utf-8 -t utf-16 -o $1 ${1}.utf8

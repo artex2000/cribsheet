@@ -1,0 +1,10 @@
+#!/bin/sh
+
+project=$(pwd|rev|cut -d / -f2|rev)
+if [ ! -d $HOME/work/build_scripts/$project ]; then
+    echo "No scripts to build $project"
+    exit 1
+else
+    $HOME/work/build_scripts/$project/build_full_project $*
+fi
+

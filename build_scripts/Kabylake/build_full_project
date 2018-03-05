@@ -1,0 +1,12 @@
+#!/bin/sh
+
+export TOOLS_DIR=$HOME/work/Tools
+export IA32_TOOLS_DIR=/usr/bin
+export X64_TOOLS_DIR=/usr/bin
+export NASM_PREFIX=$HOME/work/Tools/
+
+if [ -z $1 ]; then
+    VEB=MsiH110Slim make 2>&1 | tee bld
+else
+    VEB=MsiH110Slim make $1
+fi

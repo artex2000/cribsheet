@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#find . -name "*.$1"|xargs grep $2
+rg -g "*.$1" $2
