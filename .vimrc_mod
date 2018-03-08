@@ -1,0 +1,112 @@
+let g:mapleader = ","
+set timeoutlen=2000
+
+syntax on
+filetype plugin on
+
+"set background=dark
+"colorscheme solarized
+
+set nobackup
+set noswapfile
+set number
+"set relativenumber
+
+set tabstop=8
+set softtabstop=4
+set expandtab
+set shiftwidth=4
+set autoindent
+set cindent 
+set shiftround
+
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set wildignorecase
+
+set hidden
+set nowrap
+set textwidth=0
+
+set cursorline
+set foldcolumn=1
+set colorcolumn=90
+
+nnoremap <silent><Space> :noh<CR>
+nnoremap K i<CR><Esc>
+nnoremap <F5> :set wrap!<CR>
+
+"window splits
+set winheight=40
+set winminheight=5
+set scrolloff=12
+nnoremap <silent> + :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> - :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <Leader>h :leftabove vnew<CR>
+nnoremap <Leader>l :rightbelow vnew<CR>
+nnoremap <Leader>j :leftabove new<CR>
+nnoremap <Leader>k :rightbelow new<CR>
+
+
+function! FoldText()
+    let line = getline(v:foldstart)
+    if stridx(line, '{') == -1
+        return '/*..*/'
+    else
+        return '{...}'
+    endif
+endfunction
+
+set foldtext=FoldText()
+"set foldmethod=marker
+"set foldmarker={,}
+set foldmethod=syntax
+set fillchars=fold:\ 
+highlight Folded cterm=NONE ctermbg=NONE
+autocmd Syntax c,cpp normal zR
+nmap <Leader>o zO
+nmap <Leader>c zC
+nmap <Leader>r zR
+nmap <Leader>m zM
+
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+
+function! BuildProject()
+    exec ":silent !make"
+    exec ":cwindow"
+    exec ":redraw!"
+endfunction
+
+"command! -nargs=0 Make :call BuildProject()
+command! -nargs=0 Mk silent make! | redraw! | botright cwindow
+
+highlight Normal cterm=NONE ctermfg=5
+highlight Type cterm=BOLD ctermfg=2
+highlight Conditional cterm=BOLD ctermfg=3
+highlight Repeat cterm=BOLD ctermfg=3
+highlight Label cterm=BOLD ctermfg=3
+highlight Keyword cterm=NONE ctermfg=3
+highlight Include cterm=BOLD ctermfg=1
+highlight Number cterm=BOLD ctermfg=4
+highlight String cterm=BOLD ctermfg=4
+highlight Comment cterm=NONE ctermfg=2
+highlight Macro cterm=BOLD ctermfg=6
+
+highlight CursorLine cterm=NONE ctermbg=1
+highlight ColorColumn cterm=NONE ctermbg=1
+highlight LineNr cterm=NONE ctermbg=1 ctermfg=2
+highlight Visual term=BOLD cterm=BOLD ctermbg=7 ctermfg=5
+highlight MatchPattern term=BOLD cterm=BOLD ctermbg=7 ctermfg=5
+highlight Search term=BOLD cterm=BOLD ctermbg=7 ctermfg=5
+highlight ModeMsg cterm=NONE ctermfg=6
+highlight MoreMsg cterm=NONE ctermfg=6
+
