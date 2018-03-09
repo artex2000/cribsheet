@@ -1,23 +1,21 @@
-# This is Git's per-user configuration file.
-[user]
-# Please adapt and uncomment the following lines:
-	name = Artem Shchygel
-	email = artems@ami.com
-[push]
-	default = simple
-[core]
-	autocrlf = input
-	filemode = false
 [alias]
 	st = status
-	co = checkout
-	cm = commit
 	br = branch
-        ci = commit
+	co = checkout
+	ci = commit
 	wt = worktree
-[diff]
-	tool = bc3
-[difftool "bc3"]
-	trustExtiCode = true
-[difftool]
-	prompt = false
+
+[color "status"]
+    added = yellow bold
+    changed = black bold
+    untracked = green bold
+
+[color "branch"]
+    current = yellow bold
+    local = blue
+    remote = black bold
+
+[color "diff"]
+    new = yellow bold
+    old = black bold
+    context = blue
