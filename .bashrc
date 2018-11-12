@@ -14,8 +14,9 @@ setxkbmap -option caps:escape
 set -o vi
 bind -m vi-insert '"\e.": yank-last-arg'
 bind -m vi-insert '"\e,": yank-nth-arg'
-bind -x '"\C-p": vim $(edit_file)'
-bind -x '"\C-o": bm $(pick_inf_file)'
+#bind -x '"\C-p": vim $(edit_file)'
+bind -x '"\C-p": edit_file'
+bind -x '"\C-o": pick_inf_file'
 #bind -x '"\C-p": vim $(fzf --height 40% --reverse)'
 
 alias ~~='cd ~'
@@ -28,6 +29,9 @@ alias la='ls -al'
 alias gk='cd ~/work/Kabylake/Source'
 alias gm='cd ~/work/Mustang/Source'
 alias gj='cd ~/work/Juno/Source'
+alias gx='cd ~/work/QemuX86/Source'
+
+
 
 . /home/artex2000/.ps1
 
@@ -58,9 +62,7 @@ edit_file () {
         kill "$rg_pid" 2>/dev/null
         true)`
     if [ ! -z "$name" ]; then
-        echo "$name"
-    else
-        echo ""
+        vim "$name"
     fi
 }
 
@@ -73,8 +75,6 @@ pick_inf_file () {
         kill "$rg_pid" 2>/dev/null
         true)`
     if [ ! -z "$name" ]; then
-        echo "$name"
-    else
-        echo ""
+        bm "$name"
     fi
 }

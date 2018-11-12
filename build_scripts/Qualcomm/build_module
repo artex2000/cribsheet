@@ -1,19 +1,6 @@
 #!/bin/sh
-
-export TOOLS_DIR=$HOME/work/Tools
-export NASM_PREFIX=$HOME/work/Tools/
-
-if [[ "$1" == "cl" ]]; then
-    export IA32_TOOLS_DIR=/usr/local/bin
-    export X64_TOOLS_DIR=/usr/local/bin
-    shift
-else
-    export IA32_TOOLS_DIR=/usr/bin
-    export X64_TOOLS_DIR=/usr/bin
-fi
-
 if [ -z $1 ]; then
-    echo "Usage: bm [cl] /path/to/inf"
+    echo "Usage: bm /path/to/inf"
     exit 1
 fi
 
@@ -48,5 +35,10 @@ export PATH=$PATH:$HOME/work/Tools:$HOME/work/Tools/Bin/Linux64
 export EXTERNAL_CC_FLAGS
 export CONFIGURATION_DIR
 
+export TOOLS_DIR=$HOME/work/Tools
+#export AARCH64_TOOLS_DIR=$HOME/work/apm/8.0.10-le/bin
+export AARCH64_TOOLS_DIR=$HOME/work/linaro/gcc/bin
+#export AARCH64_TOOL_PREFIX=aarch64-apm-linux-gnu-
+export AARCH64_TOOL_PREFIX=aarch64-linux-gnu-
 
 $HOME/work/Tools/Bin/Linux64/build -m $1 

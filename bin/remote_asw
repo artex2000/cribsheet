@@ -1,0 +1,3 @@
+#!/bin/bash
+sudo mount -t cifs //Atlops2/sw_eng/ArtemS /home/artex2000/mnt/artem7 -o username=artems,password=w!nd0ws$,file_mode=0777,dir_mode=0777,vers=1.0
+

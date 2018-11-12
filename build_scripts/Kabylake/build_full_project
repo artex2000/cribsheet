@@ -1,12 +1,35 @@
 #!/bin/sh
 
 export TOOLS_DIR=$HOME/work/Tools
-export IA32_TOOLS_DIR=/usr/bin
-export X64_TOOLS_DIR=/usr/bin
 export NASM_PREFIX=$HOME/work/Tools/
 
-if [ -z $1 ]; then
-    VEB=MsiH110Slim make 2>&1 | tee bld
+if [[ "$1" == "cl" ]]; then
+    export IA32_TOOLS_DIR=/usr/local/bin
+    export X64_TOOLS_DIR=/usr/local/bin
+    shift
+    if [[ "$1" == "f" ]]; then
+        TYPE=MsiH110
+        shift
+    else
+        TYPE=MsiH110Slim
+    fi
+elif [[ "$1" == "f" ]]; then
+    TYPE=MsiH110
+    shift
+    if [[ "$1" == "cl" ]]; then
+        export IA32_TOOLS_DIR=/usr/local/bin
+        export X64_TOOLS_DIR=/usr/local/bin
+        shift
+    else
+        export IA32_TOOLS_DIR=/usr/bin
+        export X64_TOOLS_DIR=/usr/bin
+    fi
 else
-    VEB=MsiH110Slim make $1
+    TYPE=MsiH110Slim
+fi
+
+if [ -z $1 ]; then
+    VEB=$TYPE make 2>&1 | tee bld
+else
+    VEB=$TYPE make $1
 fi

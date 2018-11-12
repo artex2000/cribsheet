@@ -1,19 +1,12 @@
 #!/bin/sh
 
+export IA32_TOOLS_DIR=/usr/bin
+export X64_TOOLS_DIR=/usr/bin
 export TOOLS_DIR=$HOME/work/Tools
 export NASM_PREFIX=$HOME/work/Tools/
 
-if [[ "$1" == "cl" ]]; then
-    export IA32_TOOLS_DIR=/usr/local/bin
-    export X64_TOOLS_DIR=/usr/local/bin
-    shift
-else
-    export IA32_TOOLS_DIR=/usr/bin
-    export X64_TOOLS_DIR=/usr/bin
-fi
-
 if [ -z $1 ]; then
-    echo "Usage: bm [cl] /path/to/inf"
+    echo "Usage: bm [clang] /path/to/inf"
     exit 1
 fi
 

@@ -1,0 +1,21 @@
+[alias]
+	st = status
+	br = branch
+	co = checkout
+	ci = commit
+	wt = worktree
+
+[color "status"]
+    added = yellow bold
+    changed = black bold
+    untracked = green bold
+
+[color "branch"]
+    current = yellow bold
+    local = blue
+    remote = black bold
+
+[color "diff"]
+    new = yellow bold
+    old = black bold
+    context = blue

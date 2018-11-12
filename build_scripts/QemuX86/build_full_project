@@ -1,0 +1,13 @@
+#!/bin/sh
+
+export TOOLS_DIR=$HOME/work/Tools
+export NASM_PREFIX=$HOME/work/Tools/
+export IA32_TOOLS_DIR=/usr/bin
+export X64_TOOLS_DIR=/usr/bin
+
+
+if [ -z $1 ]; then
+    make 2>&1 | tee bld
+else
+    make $1
+fi

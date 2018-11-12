@@ -1,0 +1,11 @@
+#!/bin/sh
+
+export AARCH64_TOOLS_DIR=$HOME/work/linaro/gcc/bin
+export AARCH64_TOOL_PREFIX=aarch64-linux-gnu-
+export TOOLS_DIR=$HOME/work/Tools
+
+if [ -z $1 ]; then
+    make 2>&1 | tee bld
+else
+    make $1
+fi

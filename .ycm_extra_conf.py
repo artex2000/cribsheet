@@ -50,7 +50,11 @@ def FindNearest(path, target):
     return FindNearest(parent, target)
 
 def FlagsForCompilationDatabase(root, filename):
-        compilation_db_path = FindNearest(root, 'compile_commands.json')
+        tmp_compilation_db_path = FindNearest(root, 'compile_commands.json')
+        if not tmp_compilation_db_path:
+            return None
+        compilation_db_path = tmp_compilation_db_path
+        compilation_db_dir = os.path.dirname(compilation_db_path)
         compilation_db =  ycm_core.CompilationDatabase(compilation_db_dir)
         if not compilation_db:
             return None
