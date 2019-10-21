@@ -1,0 +1,36 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Artem Shchygel
+	email = artems@ami.com
+[push]
+	default = simple
+[core]
+	autocrlf = input
+	filemode = false
+	editor = vim
+[alias]
+	st = status
+	co = checkout
+	br = branch
+        ci = commit
+	wt = worktree
+        rb = rebase
+        mt = mergetool
+        dt = difftool
+        lg = log
+        rbc = rebase --continue
+        lgo = log --oneline
+[diff]
+	tool = bc3
+[difftool "bc3"]
+	trustExtiCode = true
+[difftool]
+	prompt = false
+[merge]
+	tool = bc3
+[mergetool]
+	prompt = false
+	keepBackup = false
+[commit]
+	template = ~/.gitmessage
